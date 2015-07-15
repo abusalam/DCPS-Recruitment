@@ -9,7 +9,7 @@ function mypopup(url,width,height)
 </script>
 <html>
 <head>
-<title>Welcome to Sarva Shiksha Mission Online Recruitment Portal</title>
+<title>Welcome to District Child Protection Society Online Recruitment Portal</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="CSS/inb.css" rel="stylesheet" type="text/css">
 </head>
@@ -139,7 +139,7 @@ function mypopup(url,width,height)
                       <td class="tablecontent1" align="center" valign="middle"> 
                         <p><span class="link1"><font color="#00a2cf">Design and 
                           Develped by National Informatics Centre and Content 
-                          Provided By SSM Purba Medinipur West Bengal 
+                          Provided By SSM Paschim Medinipur West Bengal
                           <br>
                           The application is compatible with Internet Explorer 
                           versions (6.0,7.0,8.0),Mozilla Firefox3.0, Google Chrome2.0</font></span><br>

@@ -5,7 +5,7 @@ function DisplayDefaultForm()
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcome to SSM Online Portal-Application Reprint</title>
+<title>Welcome to DCPS Online Portal-Application Reprint</title>
 <link href="CSS/inb.css" rel="stylesheet" type="text/css">
 </head>
 <body  topmargin="0" oncontextmenu="return false;" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
@@ -85,7 +85,7 @@ function DisplayDefaultForm()
                               <tr> 
                                 <td colspan="2" class="tablecontent1" align="center" valign="top"><font color="#0099CC">Design and 
                           Develped by National Informatics Centre and Content 
-                          Provided By DCPS Purba Medinipur West Bengal  </font></td>
+                          Provided By DCPS Paschim Medinipur West Bengal  </font></td>
                               </tr>
                             </tbody>
                           </table>

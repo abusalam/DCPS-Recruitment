@@ -102,7 +102,7 @@ switch($action)
 		echo "<br><h2 align=\"center\"><a href=\"index.php\">Login</a></h2>";
 		break;
 	default:
-		echo "<h2 align=\"center\">Grievance Redressal System For PurbaMedinipur</h2>";
+		echo "<h2 align=\"center\">Grievance Redressal System For Paschim Medinipur</h2>";
 		echo "<br><h2 align=\"center\"><a href=\"index.php\">Login</a></h2>";
 		break;
 }

@@ -881,7 +881,7 @@ else if(trim(document.getElementById('ed21').value) == "")
 <tr>
     <td class="tablecontent1" height="24">
 <div align="center"><span class="link1"><font color="#00a2cf">
-       Design and Develped by National Informatics Centre Purba Medinipur West Bengal and Content Provided By DCPS Purba Medinipur
+       Design and Develped by National Informatics Centre Purba Medinipur West Bengal and Content Provided By DCPS Paschim Medinipur
         </font></span>
       </div></td>
 </tr>
