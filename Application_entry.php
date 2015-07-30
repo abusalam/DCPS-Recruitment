@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+include('settings.inc.php');
 function application_Register()
 {
     ?>
@@ -320,33 +321,24 @@ function application_Register()
                 <tr>
                     <td height="80" align="left">
                         <div align="left">
-                            <img class="logo" src="image/Emblem_of_India.png" width="70">
+                            <img class="logo" src="image/Emblem_of_India.png" width="60">
 
                             <div class="site-head">
                                 <h2>Government of West Bengal</h2>
                                 <strong>Office of the District Magistrate</strong><br/>
-                                <span>District Social Welfare :: District Project Management Unit</span><br/>
-                                <span>Paschim Medinipur</span>
+                                <span><?php echo ORG; ?></span><br/>
+                                <span><?php echo DISTRICT; ?></span>
                             </div>
                         </div>
                     </td>
                 </tr>
             </table>
-
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                    <td width="9"><img src="image/h_curve.gif" height="27" width="9"></td>
-                    <td class="header" bgcolor="#E9FAFE" width="1800">Recruitment For District Child Protection Unit
-                    </td>
-                    <td width="30"><img src="image/h_cut.gif" height="27" width="28"></td>
-
-                    <td class="header" align="right" width="415">
-                        <div align="left"><strong><font color="#FF0000" size="2">*
-                                    Mandatory Field</font></strong></div>
-                    </td>
-                </tr>
-            </table>
-
+            <div class="header">
+                Application Form for the Recruitment of Various Posts under <?php echo OFFICE; ?>
+            </div>
+            <div style="float: right;color: #ff0000;margin-right: 50px;">
+                <strong>* Mandatory Field</strong>
+            </div>
             <table width="100%" height="977">
                 <tr bgcolor="#CCFFFF">
                     <TD class="tablecontent1" height="41" colspan="4">
@@ -358,7 +350,7 @@ function application_Register()
                                                 <?php
                                                 $sqlstr = "select * from post";
                                                 $rec = executeSqlQuery($sqlstr);
-                                                echo "<option value=\"0\">--Select Post--</>";
+                                                echo "<option value=\"0\">--Select Post--</option>";
                                                 while ($row = mysql_fetch_array($rec)) {
 
                                                     echo "<option value=" . $row["PostCode"] . ">" . $row["PostName"] . "</>";
@@ -414,7 +406,7 @@ function application_Register()
                             <?php
                             $sqlstr = "select * from cast";
                             $rec = executeSqlQuery($sqlstr);
-                            echo "<option value=\"0\">--Select Category--</>";
+                            echo "<option value=\"0\">--Select Category--</option>";
                             while ($row = mysql_fetch_array($rec)) {
                                 echo "<option value=" . $row["Code"] . ">" . $row["Desc"] . "</>";
 
@@ -526,7 +518,7 @@ function application_Register()
                                                 <?php
                                                 $sqlstr = "select * from sex";
                                                 $rec = executeSqlQuery($sqlstr);
-                                                echo "<option value=\"0\">--Select Sex--</>";
+                                                echo "<option value=\"0\">--Select Sex--</option>";
                                                 while ($row = mysql_fetch_array($rec)) {
                                                     echo "<option value=" . $row["Code"] . ">" . $row["Gender"] . "</>";
 
@@ -598,7 +590,7 @@ function application_Register()
                                         <?php
                                         $sqlstr = "select * from block_muni";
                                         $rec = executeSqlQuery($sqlstr);
-                                        echo "<option value=\"0\">--Select Block--</>";
+                                        echo "<option value=\"0\">--Select Block--</option>";
                                         while ($row = mysql_fetch_array($rec)) {
                                             echo "<option value=" . $row["block_municd"] . ">" . $row["block_muni_nm"] . "</>";
 
@@ -614,7 +606,7 @@ function application_Register()
                                         <?php
                                         $sqlstr = "select * from subdivision";
                                         $rec = executeSqlQuery($sqlstr);
-                                        echo "<option value=\"0\">--Select Subdivision--</>";
+                                        echo "<option value=\"0\">--Select Subdivision--</option>";
                                         while ($row = mysql_fetch_array($rec)) {
                                             echo "<option value=" . $row["sdiv_cd"] . ">" . $row["subdiv"] . "</>";
 
@@ -643,7 +635,7 @@ function application_Register()
                                         <?php
                                         $sqlstr = "select * from state";
                                         $rec = executeSqlQuery($sqlstr);
-                                        echo "<option value=\"0\">--Select State--</>";
+                                        echo "<option value=\"0\">--Select State--</option>";
                                         while ($row = mysql_fetch_array($rec)) {
                                             echo "<option value=" . $row["Code"] . ">" . $row["StateName"] . "</>";
 
@@ -680,7 +672,7 @@ function application_Register()
                                         <?php
                                         $sqlstr = "select * from block_muni";
                                         $rec = executeSqlQuery($sqlstr);
-                                        echo "<option value=\"0\">--Select Block--</>";
+                                        echo "<option value=\"0\">--Select Block--</option>";
                                         while ($row = mysql_fetch_array($rec)) {
                                             echo "<option value=" . $row["block_municd"] . ">" . $row["block_muni_nm"] . "</>";
                                         }
@@ -695,7 +687,7 @@ function application_Register()
                                         <?php
                                         $sqlstr = "select * from subdivision";
                                         $rec = executeSqlQuery($sqlstr);
-                                        echo "<option value=\"0\">--Select Subdivision--</>";
+                                        echo "<option value=\"0\">--Select Subdivision--</option>";
                                         while ($row = mysql_fetch_array($rec)) {
                                             echo "<option value=" . $row["sdiv_cd"] . ">" . $row["subdiv"] . "</>";
 
@@ -725,7 +717,7 @@ function application_Register()
                                         <?php
                                         $sqlstr = "select * from state";
                                         $rec = executeSqlQuery($sqlstr);
-                                        echo "<option value=\"0\">--Select State--</>";
+                                        echo "<option value=\"0\">--Select State--</option>";
                                         while ($row = mysql_fetch_array($rec)) {
                                             echo "<option value=" . $row["Code"] . ">" . $row["StateName"] . "</>";
                                         }
@@ -742,358 +734,362 @@ function application_Register()
                                 <input name="checkbox1" type="checkbox" id="checkbox1" onClick="updateaddress()">
                             </strong></font></td>
                 </tr>
-                <td height="2"></td>
-                <td height="2"></tr>
-                    <tr>
-                        <td height="163" colspan="4"><font color="#000033"><strong><font size="2"
-                                                                                         face="Arial, Helvetica, sans-serif">
-                                    </font> </strong> </font>
-                            <table width="99%" height="341" border="1" cellpadding="0" cellspacing="0"
-                                   bordercolor="#000000">
-                                <tr bgcolor="#CCFFFF">
-                                    <td width="11%" class="tablecontent1">
-                                        <div align="center"><font color="#0000CC"><strong><font size="2"
-                                                                                                face="Arial, Helvetica, sans-serif">Qualification</font></strong></font>
-                                        </div>
-                                    </td>
-                                    <td width="23%" class="tablecontent1">
-                                        <div align="center"><font color="#0000CC"><strong><font size="2"
-                                                                                                face="Arial, Helvetica, sans-serif">Name
-                                                        Of Institute/Board/University</font></strong></font></div>
-                                    </td>
-                                    <td width="13%" class="tablecontent1">
-                                        <div align="center"><strong><font color="#0000CC" size="2"
-                                                                          face="Arial, Helvetica, sans-serif">Year of
-                                                    Passing</font></strong></div>
-                                    </td>
-                                    <td width="9%" class="tablecontent1">
-                                        <div align="center">
-                                            <p><strong><font color="#0000CC" size="2"
-                                                             face="Arial, Helvetica, sans-serif">Total
-                                                        Marks</font></strong></p>
-                                        </div>
-                                    </td>
-                                    <td width="9%" class="tablecontent1">
-                                        <div align="center"><strong><font color="#0000CC" size="2"
-                                                                          face="Arial, Helvetica, sans-serif">Marks
-                                                    Obtained</font></strong></div>
-                                    </td>
-                                    <td width="19%" class="tablecontent1">
-                                        <div align="center"><font color="#0000CC"><strong><font size="2"
-                                                                                                face="Arial, Helvetica, sans-serif">%
-                                                        Of Marks Obtained</font></strong></font></div>
-                                    </td>
-                                    <td width="50%" class="tablecontent1">
-                                        <div align="center"><font color="#0000CC"><strong><font size="2"
-                                                                                                face="Arial, Helvetica, sans-serif">Grade/Division</font></strong></font>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="54" bgcolor="#FFFFFF">
-                                        <div align="center"><font color="#0000FF">
-                                                <label><strong><font size="2" face="Arial, Helvetica, sans-serif">Madhyamik</font></strong></label>
-                                            </font><font color="#000033"><strong><font size="2"
-                                                                                       face="Arial, Helvetica, sans-serif"><font
-                                                            color="#FF0000">*</font></font></strong></font></div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed01" type="text" id="ed01" value="" size="40">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed02" type="text" id="ed02" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed03" type="text" id="ed03" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed04" type="text" id="ed04" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed05" type="text" id="ed05" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td width="50%" colspan="3">
-                                        <div align="center">
-                                            <input name="ed06" type="text" id="ed06" value="" size="5">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="54" bgcolor="#FFFFFF">
-                                        <div align="center"><font color="#0000FF">
-                                                <label><strong><font size="2" face="Arial, Helvetica, sans-serif">Higher
-                                                            Secondary</font></strong></label>
-                                            </font><font color="#000033"><strong><font size="2"
-                                                                                       face="Arial, Helvetica, sans-serif"><font
-                                                            color="#FF0000">*</font></font></strong></font></div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed11" type="text" id="ed11" value="" size="40">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed12" type="text" id="ed12" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed13" type="text" id="ed13" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed14" type="text" id="ed14" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed15" type="text" id="ed15" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td colspan="3">
-                                        <div align="center">
-                                            <input name="ed16" type="text" id="ed16" value="" size="5">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="39" bgcolor="#FFFFFF">
-                                        <div align="center"><font color="#0000FF">
-                                                <label><strong><font size="2" face="Arial, Helvetica, sans-serif">Graduation</font></strong></label>
-                                            </font><font color="#000033"><strong><font size="2"
-                                                                                       face="Arial, Helvetica, sans-serif"><font
-                                                            color="#FF0000">*</font></font></strong></font></div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed21" type="text" id="ed21" value="" size="40">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed22" type="text" id="ed22" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed23" type="text" id="ed23" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed24" type="text" id="ed24" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed25" type="text" id="ed25" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td colspan="3">
-                                        <div align="center">
-                                            <input name="ed26" type="text" id="ed26" value="" size="5">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="43" bgcolor="#FFFFFF">
-                                        <div align="center"><font color="#0000FF">
-                                                <label><strong><font size="2" face="Arial, Helvetica, sans-serif">Post
-                                                            Graduation</font></strong></label>
-                                            </font></div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed31" type="text" id="ed31" value="" size="40">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed32" type="text" id="ed32" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed33" type="text" id="ed33" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed34" type="text" id="ed34" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed35" type="text" id="ed35" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td colspan="3">
-                                        <div align="center">
-                                            <input name="ed36" type="text" id="ed36" value="" size="5">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="44" bgcolor="#FFFFFF">
-                                        <div align="center"><font color="#0000FF">
-                                                <label><strong><font size="2"
-                                                                     face="Arial, Helvetica, sans-serif">Other</font></strong></label>
-                                            </font></div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed41" type="text" id="ed41" value="" size="40">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed42" type="text" id="ed42" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed43" type="text" id="ed43" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed44" type="text" id="ed44" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center"><font color="#000033"><strong><font size="2"
-                                                                                                face="Arial, Helvetica, sans-serif">
-                                                        <input name="ed45" type="text" id="ed45" value="" size="5">
-                                                    </font></strong></font></div>
-                                    </td>
-                                    <td colspan="3">
-                                        <div align="center"><font color="#000033"><strong><font size="2"
-                                                                                                face="Arial, Helvetica, sans-serif">
-                                                        <input name="ed46" type="text" id="ed46" value="" size="5">
-                                                    </font></strong></font></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="44" bgcolor="#FFFFFF">
-                                        <div align="center"><font color="#0000FF">
-                                                <label><strong><font size="2" face="Arial, Helvetica, sans-serif">Computer
-                                                            Certificate</font></strong></label></font></div>
-                                    </td>
-                                    <td><input name="ed51" type="text" id="ed51" value="" size="40"></td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed52" type="text" id="ed52" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed53" type="text" id="ed53" value="" size="4">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center">
-                                            <input name="ed54" type="text" id="ed54" value="" size="5">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div align="center"><font color="#000033"><strong><font size="2"
-                                                                                                face="Arial, Helvetica, sans-serif">
-                                                        <input name="ed55" type="text" id="ed55" value="" size="5">
-                                                    </font></strong></font></div>
-                                    </td>
-                                    <td colspan="3">
-                                        <div align="center"><font color="#000033"><strong><font size="2"
-                                                                                                face="Arial, Helvetica, sans-serif">
-                                                        <input name="ed56" type="text" id="ed56" value="" size="5">
-                                                    </font></strong></font></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="205" colspan="4">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
-                                <tr>
-                                    <td class="tablecontent1"><font size="2"
-                                                                    face="Arial, Helvetica, sans-serif"><strong>Experience(If
-                                                Any):-</strong></font></td>
-                                    <td class="tablecontent1" height="60" colspan="4"><textarea name="ed81" value=""
-                                                                                                cols="70" rows="3"
-                                                                                                id="ed81"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tablecontent2"><font size="2"
-                                                                    face="Arial, Helvetica, sans-serif"><strong>PIN<font
-                                                    color="#FF0000">*</font>:-</strong></font></td>
-                                    <td class="tablecontent2" height="60" colspan="4"><input name="pin" id="pin"
-                                                                                             type="password" size="4"
-                                                                                             maxlength="4" value="">
-                                        <strong><font color="#FF0000" size="1">(Please Specify 4 digit
-                                                PIN number for uploading Photograph &amp; Signature)</font></strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="90" colspan="7" class="tablecontent2">
-                                        <div align="justify"><font color="#000033"><strong><font size="2">I
-                                                        hereby declare that I fulfil the eligibility criteria for the
+                <tr>
+                    <td height="163" colspan="4">
+                        <table width="99%" height="341" border="1" cellpadding="0" cellspacing="0"
+                               bordercolor="#000000">
+                            <tr bgcolor="#CCFFFF">
+                                <td width="11%" class="tablecontent1">
+                                    <div align="center"><font color="#0000CC"><strong><font size="2"
+                                                                                            face="Arial, Helvetica, sans-serif">Qualification</font></strong></font>
+                                    </div>
+                                </td>
+                                <td width="23%" class="tablecontent1">
+                                    <div align="center"><font color="#0000CC"><strong><font size="2"
+                                                                                            face="Arial, Helvetica, sans-serif">Name
+                                                    Of Institute/Board/University</font></strong></font></div>
+                                </td>
+                                <td width="13%" class="tablecontent1">
+                                    <div align="center"><strong><font color="#0000CC" size="2"
+                                                                      face="Arial, Helvetica, sans-serif">Year of
+                                                Passing</font></strong></div>
+                                </td>
+                                <td width="9%" class="tablecontent1">
+                                    <div align="center">
+                                        <p><strong><font color="#0000CC" size="2"
+                                                         face="Arial, Helvetica, sans-serif">Total
+                                                    Marks</font></strong></p>
+                                    </div>
+                                </td>
+                                <td width="9%" class="tablecontent1">
+                                    <div align="center"><strong><font color="#0000CC" size="2"
+                                                                      face="Arial, Helvetica, sans-serif">Marks
+                                                Obtained</font></strong></div>
+                                </td>
+                                <td width="19%" class="tablecontent1">
+                                    <div align="center"><font color="#0000CC"><strong><font size="2"
+                                                                                            face="Arial, Helvetica, sans-serif">%
+                                                    Of Marks Obtained</font></strong></font></div>
+                                </td>
+                                <td width="50%" class="tablecontent1">
+                                    <div align="center"><font color="#0000CC"><strong><font size="2"
+                                                                                            face="Arial, Helvetica, sans-serif">Grade/Division</font></strong></font>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="54" bgcolor="#FFFFFF">
+                                    <div align="center"><font color="#0000FF">
+                                            <label><strong><font size="2"
+                                                                 face="Arial, Helvetica, sans-serif">Madhyamik</font></strong></label>
+                                        </font><font color="#000033"><strong><font size="2"
+                                                                                   face="Arial, Helvetica, sans-serif"><font
+                                                        color="#FF0000">*</font></font></strong></font></div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed01" type="text" id="ed01" value="" size="40">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed02" type="text" id="ed02" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed03" type="text" id="ed03" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed04" type="text" id="ed04" value="" size="5">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed05" type="text" id="ed05" value="" size="5">
+                                    </div>
+                                </td>
+                                <td width="50%" colspan="3">
+                                    <div align="center">
+                                        <input name="ed06" type="text" id="ed06" value="" size="5">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="54" bgcolor="#FFFFFF">
+                                    <div align="center"><font color="#0000FF">
+                                            <label><strong><font size="2" face="Arial, Helvetica, sans-serif">Higher
+                                                        Secondary</font></strong></label>
+                                        </font><font color="#000033"><strong><font size="2"
+                                                                                   face="Arial, Helvetica, sans-serif"><font
+                                                        color="#FF0000">*</font></font></strong></font></div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed11" type="text" id="ed11" value="" size="40">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed12" type="text" id="ed12" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed13" type="text" id="ed13" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed14" type="text" id="ed14" value="" size="5">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed15" type="text" id="ed15" value="" size="5">
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div align="center">
+                                        <input name="ed16" type="text" id="ed16" value="" size="5">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="39" bgcolor="#FFFFFF">
+                                    <div align="center"><font color="#0000FF">
+                                            <label><strong><font size="2"
+                                                                 face="Arial, Helvetica, sans-serif">Graduation</font></strong></label>
+                                        </font><font color="#000033"><strong><font size="2"
+                                                                                   face="Arial, Helvetica, sans-serif"><font
+                                                        color="#FF0000">*</font></font></strong></font></div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed21" type="text" id="ed21" value="" size="40">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed22" type="text" id="ed22" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed23" type="text" id="ed23" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed24" type="text" id="ed24" value="" size="5">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed25" type="text" id="ed25" value="" size="5">
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div align="center">
+                                        <input name="ed26" type="text" id="ed26" value="" size="5">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="43" bgcolor="#FFFFFF">
+                                    <div align="center"><font color="#0000FF">
+                                            <label><strong><font size="2" face="Arial, Helvetica, sans-serif">Post
+                                                        Graduation</font></strong></label>
+                                        </font></div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed31" type="text" id="ed31" value="" size="40">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed32" type="text" id="ed32" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed33" type="text" id="ed33" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed34" type="text" id="ed34" value="" size="5">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed35" type="text" id="ed35" value="" size="5">
+                                    </div>
+                                </td>
+                                <td colspan="3">
+                                    <div align="center">
+                                        <input name="ed36" type="text" id="ed36" value="" size="5">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="44" bgcolor="#FFFFFF">
+                                    <div align="center"><font color="#0000FF">
+                                            <label><strong><font size="2"
+                                                                 face="Arial, Helvetica, sans-serif">Other</font></strong></label>
+                                        </font></div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed41" type="text" id="ed41" value="" size="40">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed42" type="text" id="ed42" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed43" type="text" id="ed43" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed44" type="text" id="ed44" value="" size="5">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center"><font color="#000033"><strong><font size="2"
+                                                                                            face="Arial, Helvetica, sans-serif">
+                                                    <input name="ed45" type="text" id="ed45" value="" size="5">
+                                                </font></strong></font></div>
+                                </td>
+                                <td colspan="3">
+                                    <div align="center"><font color="#000033"><strong><font size="2"
+                                                                                            face="Arial, Helvetica, sans-serif">
+                                                    <input name="ed46" type="text" id="ed46" value="" size="5">
+                                                </font></strong></font></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="44" bgcolor="#FFFFFF">
+                                    <div align="center"><font color="#0000FF">
+                                            <label><strong><font size="2" face="Arial, Helvetica, sans-serif">Computer
+                                                        Certificate</font></strong></label></font></div>
+                                </td>
+                                <td><input name="ed51" type="text" id="ed51" value="" size="40"></td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed52" type="text" id="ed52" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed53" type="text" id="ed53" value="" size="4">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center">
+                                        <input name="ed54" type="text" id="ed54" value="" size="5">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div align="center"><font color="#000033"><strong><font size="2"
+                                                                                            face="Arial, Helvetica, sans-serif">
+                                                    <input name="ed55" type="text" id="ed55" value="" size="5">
+                                                </font></strong></font></div>
+                                </td>
+                                <td colspan="3">
+                                    <div align="center"><font color="#000033"><strong><font size="2"
+                                                                                            face="Arial, Helvetica, sans-serif">
+                                                    <input name="ed56" type="text" id="ed56" value="" size="5">
+                                                </font></strong></font></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="205" colspan="4">
+                        <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
+                            <tr>
+                                <td class="tablecontent1"><font size="2"
+                                                                face="Arial, Helvetica, sans-serif"><strong>Experience(If
+                                            Any):-</strong></font></td>
+                                <td class="tablecontent1" height="60" colspan="4"><textarea name="ed81" value=""
+                                                                                            cols="70" rows="3"
+                                                                                            id="ed81"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="tablecontent2"><font size="2"
+                                                                face="Arial, Helvetica, sans-serif"><strong>PIN<font
+                                                color="#FF0000">*</font>:-</strong></font></td>
+                                <td class="tablecontent2" height="60" colspan="4"><input name="pin" id="pin"
+                                                                                         type="password" size="4"
+                                                                                         maxlength="4" value="">
+                                    <strong><font color="#FF0000" size="1">(Please Specify 4 digit
+                                            PIN number for uploading Photograph &amp; Signature)</font></strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="90" colspan="7" class="tablecontent2">
+                                    <div align="justify">
+                                        <font color="#000033"><strong><font size="2">
+                                                    <label for="accp_decl">
+                                                        <input name="accp_decl" type="checkbox" id="accp_decl"/>
+                                                        I hereby declare that I fulfil the eligibility criteria for
+                                                        the
                                                         post in terms of educational qualifications (including
                                                         percentage
-                                                        of marks obtained in the examination and certificate course),
-                                                        experience, age, etc. and I am aware that mere calling for Test
-                                                        or Interview shall not entail me as fulfilling the conditions
+                                                        of marks obtained in the examination and certificate
+                                                        course),
+                                                        experience, age, etc. and I am aware that mere calling for
+                                                        Test
+                                                        or Interview shall not entail me as fulfilling the
+                                                        conditions
                                                         of eligibility. I certify that the information given in the
-                                                        application is correct and complete to the best of my knowledge
+                                                        application is correct and complete to the best of my
+                                                        knowledge
                                                         and nothing has been concealed/distorted. I understand that
                                                         if at any time I am found to have concealed/distorted any
                                                         material
                                                         information my candidature/appointment is liable to summary
                                                         termination without notice or compensation.
-                                                        <input name="accp_decl" type="checkbox" id="accp_decl">
-                                                    </font></strong></font></div>
-                                    </td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td height="28" colspan="4" align="right">
-                            <div align="center"><strong><font color="#000033" size="2"
-                                                              face="Arial, Helvetica, sans-serif">
-                                        <input type="button" name="Submit" value="Save" Onclick="validate()"
-                                               class="button">
-                                        <input name="myear" id="myear" value="1980" type="hidden">
-                                        <input name="Exit" type="button" id="Exit" value="Exit" class="button"
-                                               onClick="window.close();">
-                                    </font></strong></div>
-                            <div align="center"><strong><font color="#000033" size="2"
-                                                              face="Arial, Helvetica, sans-serif">
-                                    </font></strong></div>
-                        </td>
-                    </tr>
-                <td width="132"></td>
-                <td width="393" height="2"> </tr>
+                                                    </label>
+                                                </font></strong></font></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="28" colspan="4" align="right">
+                        <div align="center"><strong><font color="#000033" size="2"
+                                                          face="Arial, Helvetica, sans-serif">
+                                    <input type="button" name="Submit" value="Save" Onclick="validate()"
+                                           class="button">
+                                    <input name="myear" id="myear" value="1980" type="hidden">
+                                    <input name="Exit" type="button" id="Exit" value="Exit" class="button"
+                                           onClick="window.close();">
+                                </font></strong></div>
+                        <div align="center"><strong><font color="#000033" size="2"
+                                                          face="Arial, Helvetica, sans-serif">
+                                </font></strong></div>
+                    </td>
+                </tr>
             </table>
         </div>
         <table width="100%">
             <tr>
                 <td class="tablecontent1" height="24">
                     <div align="center"><span class="link1"><font color="#00a2cf">
-                                Design and Develped by National Informatics Centre Purba Medinipur West Bengal and
-                                Content Provided By DCPS Paschim Medinipur
+                                Design and Develped by National Informatics Centre Purba Medinipur and
+                                Content Provided By <?php echo OFFICE . ', ' . DISTRICT;?> West Bengal
                             </font></span>
                     </div>
                 </td>
@@ -1102,7 +1098,7 @@ function application_Register()
     </form>
     </body>
     </html>
-    <?php
+<?php
 }
 
 function DisplayDefaultForm()

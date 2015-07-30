@@ -167,14 +167,25 @@ a.link4:hover {
 }
 
 .header {
+    display: inline-block;
     height: 22px;
     color: #016284;
-    padding-top: 1px;
-    padding-bottom: 1px;
     font-family: Tahoma;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
+    margin-left: 2px;
+    padding: 4px 100px 4px 10px;
+    background-color: #E9FAFE;
+    border-top-left-radius: 6px;
+}
 
+.header:after {
+    content: "";
+    margin-top: -4px;
+    margin-left: 100px;
+    position: absolute;
+    border-bottom: 30px solid #E9FAFE;
+    border-right: 30px solid transparent;
 }
 
 .footertext {
@@ -240,11 +251,13 @@ a.linkfooter:hover {
 
 .tdbg {
     border: 1px solid #0199cd;
-
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
 }
 
 .content {
-
     font-family: Tahoma;
     font-size: 10px;
     color: #000000;
@@ -258,7 +271,7 @@ a.linkfooter:hover {
     color: #000000;
     text-decoration: none;
     font-weight: bold;
-    padding: 0 0 0 0px;
+    padding: 10px 10px;
 
 }
 
@@ -335,6 +348,7 @@ h2 {
 
 .logo {
     float: left;
+    margin: 10px 10px 10px 25px;
 }
 
 .site-head {
@@ -342,3 +356,4 @@ h2 {
     margin-left: 75px;
     padding: 10px;
 }
+
