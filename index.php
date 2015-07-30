@@ -9,7 +9,7 @@ function mypopup(url,width,height)
 </script>
 <html>
 <head>
-<title>Welcome to District Child Protection Society Online Recruitment Portal</title>
+<title>Welcome to  Online Recruitment Portal Purba Medinipur</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="CSS/inb.css" rel="stylesheet" type="text/css">
 </head>
@@ -17,9 +17,9 @@ function mypopup(url,width,height)
 <body topmargin="0" leftmargin="0" rightmargin="0" oncontextmenu="return false;" marginheight="0" marginwidth="0">
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="780">
   <tbody><tr>
-    <td class="tdbg"><table border="0" cellpadding="0" cellspacing="0" width="780">	
+    <td class="tdbg"><table border="0" cellpadding="0" cellspacing="0" width="806">	
        <tbody><tr>
-        <td>
+        <td width="806">
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
                  
@@ -39,7 +39,7 @@ function mypopup(url,width,height)
             </tr>
            <tr>
 				<td width="9"><img src="image/h_curve.gif" height="27" width="9"></td>
-				<td class="header" bgcolor="#E9FAFE" width="1800">Sarva Shiksha Mission Online Recruitment Portal</td>
+				<td class="header" bgcolor="#E9FAFE" width="1800">Online Application for Block ASHA Facilitator of different Block of  Purba Medinipur</td>
 				<td width="30"><img src="image/h_cut.gif" height="27" width="28"></td>
 				<td class="header" align="right" width="415">&nbsp;</td>
 			</tr>
@@ -47,11 +47,11 @@ function mypopup(url,width,height)
 				<td colspan="4" bgcolor="#E9FAFE" height="1"></td>
 			</tr>
           </tbody></table>
-                <table align="center" border="0" cellpadding="2" cellspacing="2" width="752">
+                <table align="center" border="0" cellpadding="2" cellspacing="2" width="758">
                   <tbody>
                     <tr> 
                       <td class="tablecontent1" align="center" valign="middle" width="25">&nbsp;</td>
-                      <td class="tablecontent1" align="right" valign="middle" width="713">&nbsp;</td>
+                      <td class="tablecontent1" align="right" valign="middle" width="719">&nbsp;</td>
                     </tr>
                     <tr> 
                       <td width="25"   align="center" valign="middle" class="tablecontent1"><img src="image/bullet1.gif" height="11" width="7"></td>
@@ -62,7 +62,7 @@ function mypopup(url,width,height)
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                        &nbsp;<a href="RSBY Recruitment2015.pdf" target="_blank" class="disability">Employment 
+                        &nbsp;<a href="Notification.pdf" target="_blank" class="disability">Employment 
                         Notice</a></td>
                     </tr>
 					 <tr> 
@@ -82,14 +82,14 @@ function mypopup(url,width,height)
                       <td class="tablecontent1" align="left" valign="middle"><table border="0" width="100%">
                           <tbody>
                             <tr> 
-                              <td class="personaldetails" align="left" width="47%">Opening Date for Application</td>
+                              <td class="personaldetails" align="left" width="47%">Opening Date for online Application</td>
                               <td class="personaldetails" width="1%">:</td>
-                              <td class="personaldetails" align="left" width="52%">12/05/2015</td>
+                              <td class="personaldetails" align="left" width="52%">29/07/2015</td>
                             </tr>
                             <tr> 
                               <td class="personaldetails" align="left">Last Date of online submission of Application</td>
                               <td class="personaldetails">:</td>
-                              <td class="personaldetails" align="left">26/05/2015 upto 5.00 P.M</td>
+                              <td class="personaldetails" align="left">10/08/2015 upto 5.00 P.M</td>
                             </tr>
                             <!-- <tr>
                     <td align="left" class="personaldetails">Start Date for Fee deposit</td>
@@ -102,11 +102,6 @@ function mypopup(url,width,height)
                     <td align="left" class="personaldetails"></td>
                   </tr> -->
                             <tr> 
-                              <td class="personaldetails" align="left">Last Date of submission of Hard Copy of Application </td>
-                              <td class="personaldetails">:</td>
-                              <td class="personaldetails" align="left">08/06/2015 upto 5.00 P.M</td>
-                            </tr>
-                            <tr> 
                               <td colspan="3" class="personaldetails" align="left">&nbsp;</td>
                             </tr>
                           </tbody>
@@ -115,8 +110,8 @@ function mypopup(url,width,height)
                     <tr> 
                       <td class="tablecontent1" align="center" valign="middle">&nbsp;</td>
                       <td class="tablecontent1" align="center" valign="middle"><a class="linkfooter" href="#" onClick="javascript:mypopup('note.php','600','700')">Steps 
-                        to enable JavaScript in Internet Explorer versions (6.0,7.0,8.0),Mozilla 
-                        Firefox3.0, Google Chrome2.0</a> </td>
+                        to enable JavaScript in Internet Explorer versions (8.0,9.0),Mozilla 
+                        Firefox30.0, Google Chrome44.0</a> </td>
                     </tr>
                     <tr> 
                       <td class="tablecontent1" align="left" valign="middle">&nbsp;</td>
@@ -139,10 +134,10 @@ function mypopup(url,width,height)
                       <td class="tablecontent1" align="center" valign="middle"> 
                         <p><span class="link1"><font color="#00a2cf">Design and 
                           Develped by National Informatics Centre and Content 
-                          Provided By SSM Paschim Medinipur West Bengal
+                          Provided By District Administration Purba Medinipur West Bengal 
                           <br>
                           The application is compatible with Internet Explorer 
-                          versions (6.0,7.0,8.0),Mozilla Firefox3.0, Google Chrome2.0</font></span><br>
+                          versions (8.0,9.0),Mozilla Firefox30.0, Google Chrome44.0</font></span><br>
                         </p></td>
                     </tr>
                   </tbody>

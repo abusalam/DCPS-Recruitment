@@ -57,7 +57,7 @@ function mypopup(url,width,height)
                       <td class="tablecontent1" valign="top"></td>
                       <td class="tablecontent1" valign="top"> Candidates will 
                         be required to check the recruitment notice first through 
-                        the Districtï¿½s website <a href="http://www.purbamedinipur.gov.in/" target="_blank">www.purbamedinipur.gov.in</a> 
+                        the District’s website <a href="http://www.purbamedinipur.gov.in/" target="_blank">www.purbamedinipur.gov.in</a> 
                         before applying to the post.</td>
                     </tr>
                     <tr> 
@@ -122,7 +122,7 @@ function mypopup(url,width,height)
 					<tr> 
                                 <td colspan="2" class="tablecontent1" align="center" valign="top"><font color="#0099CC">Design and 
                           Develped by National Informatics Centre and Content 
-                          Provided By DCPS Paschim Medinipur West Bengal  </font></td>
+                          Provided By DPRDO Cell Purba Medinipur West Bengal  </font></td>
                               </tr>
                   </tbody>
                 </table></td></tr></tbody></table></td></tr></tbody></table></body

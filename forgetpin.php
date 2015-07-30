@@ -77,7 +77,7 @@ function DisplayDefaultForm()
                               <tr> 
                                 <td colspan="2" class="tablecontent1" align="center" valign="top"><font color="#0099CC">Design 
                                   and Develped by National Informatics Centre<br>
-                                  Paschim Medinipur,West Bengal</font></td>
+                                  Purba Medinipur,West Bengal</font></td>
                               </tr>
                             </tbody>
                           </table>
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 						$headers ='From: recruitment@prirecruitment.org' . "\r\n" .
 								'Reply-To: '."dprdotamlukpm@gmail.com". "\r\n" .
 								'X-Mailer: PHP/' . phpversion();
-						mail($email,"PASCHIM MEDINIPUR DPRDO RECRUITMENT :: PIN FOR THE REGISTRATION NO $appid",stripslashes($message),$headers);
+						mail($email,"PURBA MEDINIPUR DPRDO RECRUITMENT :: PIN FOR THE REGISTRATION NO $appid",stripslashes($message),$headers);
 						DisplayDefaultForm();
 						echo "<script type=\"text/javascript\">alert(\"Email has been sent to your mail id specifying your pin\")</script>";	
 					}

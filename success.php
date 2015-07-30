@@ -75,7 +75,7 @@ if ( $row = mysql_fetch_array ($result) ) {
                                 <td align="left" valign="top" class="tablecontent1"><div align="center">
                                   <p><font color="#000066" size="2" face="Arial, Helvetica, sans-serif"><strong>Thank 
                                     you for registration for the post of</strong></font></p>
-                                  <p><?php echo $c["PostName"]; ?>&nbsp;                                </p>
+                                  <p><?php echo $c["PostName"]; ?>&nbsp; at different Block under Purba Medinipur District                               </p>
                                 </div>
                                   <p align="center"><font color="#000066">Keep 
                                     your Registration Number for future purpose.</font></p>
@@ -90,13 +90,13 @@ if ( $row = mysql_fetch_array ($result) ) {
                               <tr> 
                                 <td align="left" valign="top" class="tablecontent1"><div align="center"><font color="#6600FF" size="2" face="Arial, Helvetica, sans-serif">If 
                                     you are having trouble accessing or need assistance,please 
-                                    e-mail us on dcps.purbamedinipur@gmail.com 
+                                    e-mail us on daf.purbamedinpur@gmail.com 
                                 and for information and details visit http://purbamedinipur.gov.in/</font></div></td>
                               </tr>
                               <tr> 
                                 <td class="tablecontent1" align="center" valign="top"><a class="linkfooter" href="#" onClick="javascript:mypopup('note1.php','800','700')">Steps 
                                   to enable JavaScript in Internet Explorer versions 
-                                  (6.0,7.0,8.0),Mozilla Firefox3.0, Google Chrome2.0</a></td>
+                                  (8.0,9.0),Mozilla Firefox30.0, Google Chrome44.0</a></td>
                               </tr>
                             </tbody>
                           </table>

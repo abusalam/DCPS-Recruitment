@@ -5,7 +5,7 @@ function DisplayDefaultForm()
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcome to DCPS Online Portal-Application Reprint</title>
+<title>Welcome to Application Reprint</title>
 <link href="CSS/inb.css" rel="stylesheet" type="text/css">
 </head>
 <body  topmargin="0" oncontextmenu="return false;" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
@@ -51,18 +51,18 @@ function DisplayDefaultForm()
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
               <tbody><tr>
                 <td><form id="login_frm" name="login_frm" method="POST" enctype="multipart/form-data" action=<?php echo htmlspecialchars( $_SERVER['PHP_SELF']); ?>>
-                          <table align="center" border="0" cellpadding="2" cellspacing="2" width="687">
+                          <table align="center" border="0" cellpadding="2" cellspacing="2" width="734">
                             <tbody>
                               <tr> 
-                                <td class="tablecontent1" align="left" valign="top" width="140">Registration 
+                                <td class="tablecontent1" align="left" valign="top" width="209">Registration 
                                   No <span class="alert">*</span>:</td>
-                                <td width="313" align="left" valign="top" class="tablecontent1"> 
+                                <td width="496" align="left" valign="top" class="tablecontent1"> 
                                   <input class="textbox2" name="appid" id="appid" value="" ></td>
                               </tr>
                               <tr> 
-                                <td class="tablecontent1" align="left" valign="top" width="140">Pin 
+                                <td class="tablecontent1" align="left" valign="top" width="209">Pin 
                                   <span class="alert">*</span>:</td>
-                                <td width="313" align="left" valign="top" class="tablecontent1"> 
+                                <td width="496" align="left" valign="top" class="tablecontent1"> 
                                   <input name="pin" class="textbox2" id="pin" size="4" maxlength="4" type="password" value=""> &nbsp;&nbsp;&nbsp;&nbsp;
                                   <font color="#006699" size="1" face="Arial, Helvetica, sans-serif"><a href="forgetpin.php" target="_blank">	Forgot your Pin? 
                                   </a></font></td>
@@ -85,7 +85,7 @@ function DisplayDefaultForm()
                               <tr> 
                                 <td colspan="2" class="tablecontent1" align="center" valign="top"><font color="#0099CC">Design and 
                           Develped by National Informatics Centre and Content 
-                          Provided By DCPS Paschim Medinipur West Bengal  </font></td>
+                          Provided By </font><font color="#00a2cf">District Administration</font><font color="#0099CC"> Purba Medinipur West Bengal </font></td>
                               </tr>
                             </tbody>
                           </table>

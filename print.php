@@ -10,25 +10,21 @@ $folder = "photo/";
 						$filename2 = $filename ."_"."1". ".jpg";
 						$filename3 = $filename . "_"."2".".jpg";
 
-$sqlstr = "SELECT a.appid,a.post,c.Desc as category,a.aname,a.nationality,a.father,a.dob,a.age_yr,a.mobile,a.pre_address,
-b1.block_muni_nm as block1,
-sd1.subdiv as subdiv1,a.pre_dist,a.pre_pin,a.pre_state,a.perm_address,b2.block_muni_nm as block2,sd2.subdiv as subdiv2,
-a.perm_dist,a.perm_pin,a.perm_state,a.m_inst,a.m_year,a.m_total,a.m_marks,a.m_percent,a.m_grade,a.h_inst,a.h_year,a.h_total,
-a.h_marks,a.h_percent,a.h_grade,a.g_inst,a.g_year,a.g_total,a.g_marks,a.g_percent,a.g_grade,a.p_inst,a.p_year,a.p_total,a.p_marks,a.p_percent,a.p_grade,a.oth_inst,a.oth_year,a.oth_total,a.oth_marks,a.oth_percent,a.oth_grade,
-a.cert_inst,a.cert_year,a.cert_total,a.cert_marks,a.cert_percent,a.cert_grade,a.email,a.exprience,s1.StateName As State1,s2.StateName As State2,g.Gender,p.PostName as Postname from ((((((((( applicant as a inner join sex as g on a.sex=g.Code) inner join post as p on a.post = p.PostCode) inner join state as s1 on a.pre_state=s1.Code) inner join state as s2 on a.perm_state=s2.Code)inner join block_muni as b1 on a.pre_block=b1.block_municd)
-inner join block_muni as b2 on a.perm_block=b2.block_municd)inner join subdivision as sd1 on a.pre_subdiv=sd1.sdiv_cd)inner join subdivision as sd2 on a.perm_subdiv=sd2.sdiv_cd)inner join cast as c on a.category=c.Code)where a.appid = '".$appid."' and md5(md5(`pin`)+111111)='". $pin ."'" ;
+$sqlstr = "SELECT a.appid,p.PostName as post,a.blockapp, sd.subdiv as subapp,a.aname,a.nationality,a.category,a.father,a.dob,a.sex,a.age_yr,a.mobile,a.pre_address,
+a.pre_block,a.pre_subdiv,a.pre_dist,a.pre_pin,a.pre_state,a.perm_address,a.perm_block,a.perm_subdiv,
+a.perm_dist,a.perm_pin,a.perm_state,a.email,a.pin,a.compknowledge,a.photo from applicant as a,subdivision as sd,post as p where a.appid = '".$appid."' and md5(md5(`pin`)+111111)='". $pin ."' and a.subapp=sd.sdiv_cd and a.post=p.PostCode  " ;
 $result = executeSqlQuery($sqlstr);
-if($row = mysql_fetch_array ($result)) {
+if ( $row = mysql_fetch_array ($result) ) {
 		
-} 
-else {
-header("Location: Add_image.php");
+} else {
+	header("Location: Add_image.php");
 	exit();
 }
 } else {
 	header("Location: Application_Reprint.php");
 	exit();
 }
+
 ?>
 <html>
 <head>
@@ -57,10 +53,10 @@ td { font-family : verdana;
         </tr>
         <tr> 
           <td style="border-bottom: solid 1px black; border-top: solid 1px black" align="left" colspan="3"> 
-            <div align="center">Ph No.-03228 263990&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
+            <div align="center">&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            &nbsp; &nbsp; Email- dcps.purbamedinipur@gmail.com 
+            &nbsp; &nbsp; Email- daf.purbamedinpur@gmail.com 
             <input name="Print" onClick="window.print()" type="button" value="Print" />
           </div></td>
         </tr>
@@ -69,12 +65,13 @@ td { font-family : verdana;
         <td height="99%" colspan="3" align="left" style="border-bottom: solid 1px black; border-top: solid 1px black"> 
           <table width="99%" border="0">
             <tr> 
-              <td colspan="4"><div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Application for the Post  : <font size ="3"><?php echo $row["Postname"]; ?></font></strong></font><strong><font size="1" face="Arial, Helvetica, sans-serif"> &nbsp;on contractual basis .</font></strong></div></td>
+              <td colspan="4"><div align="center"><font size="3" face="Arial, Helvetica, sans-serif"><strong>Application for the Post  : <?php echo $row["post"]; ?></strong></font><strong><font size="3" face="Arial, Helvetica, sans-serif"> &nbsp;on contractual basis for <?php echo $row["blockapp"];?>
+              under <?php echo $row["subapp"];?> Sub-Division</font></strong> </div></td>
             </tr>
             <tr> 
-              <td width="25%" height="28"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Registration 
+              <td width="13%" height="28"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Registration 
                 Number:</strong></font></td>
-              <td width="27%"><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["appid"]; ?></font></td>
+              <td width="41%"><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["appid"]; ?></font></td>
               <td colspan="2" rowspan="3">  <div align="right"><img src=<?php echo '"photo/'.$filename2.'"'; ?> name="img"  width="125" height="150" id="img"><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;&nbsp;</font></div></td>
             </tr>
             <tr> 
@@ -89,9 +86,15 @@ td { font-family : verdana;
             </tr>
             <tr> 
               <td><font size="1" face="Arial, Helvetica, sans-serif"><strong>Nationality:</strong></font></td>
-              <td><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["nationality"]; ?>&nbsp;<font size="1" face="Arial, Helvetica, sans-serif"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category:</strong></font><?php echo $row["category"]; ?></font></td>
-              <td width="15%"><font size="1" face="Arial, Helvetica, sans-serif"><strong>:Gender:</strong></font></td>
-              <td width="33%"><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["Gender"]; ?></font></td>
+              <td><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["nationality"]; ?></font></td>
+              <td width="13%"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Gender:</strong></font></td>
+              <td width="33%"><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["sex"]; ?></font></td>
+            </tr>
+            <tr> 
+              <td><font size="1" face="Arial, Helvetica, sans-serif"><strong>Category:</strong></font></td>
+              <td><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["category"]; ?></font></td>
+              <td width="13%"><font size="1" face="Arial, Helvetica, sans-serif"><strong></strong></font></td>
+              <td width="33%"><font size="1" face="Arial, Helvetica, sans-serif"></font></td>
             </tr>
             <tr> 
               <td height="32"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Date 
@@ -105,12 +108,12 @@ td { font-family : verdana;
             <tr> 
               <td height="28"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Present 
                 Address:</strong></font></td>
-              <td colspan="3"><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["pre_address"]; ?><?php echo ",Block:-".$row["block1"]; ?><?php echo ",Sub-Division:-".$row["subdiv1"]; ?><?php echo ",District:-".$row["pre_dist"]; ?>&nbsp;&nbsp;&nbsp;<?php echo "PIN:-".$row["pre_pin"]; ?>&nbsp;&nbsp;&nbsp;<?php echo "State:-".$row["State1"]; ?></font></td>
+              <td colspan="3"><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["pre_address"]; ?><?php echo ",Block:-".$row["pre_block"]; ?><?php echo ",Sub-Division:-".$row["pre_subdiv"]; ?><?php echo ",District:-".$row["pre_dist"]; ?>&nbsp;&nbsp;&nbsp;<?php echo "PIN:-".$row["pre_pin"]; ?>&nbsp;&nbsp;&nbsp;<?php echo "State:-".$row["pre_state"]; ?></font></td>
             </tr>
             <tr> 
               <td height="27"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Permanent 
                 Address:</strong></font></td>
-              <td colspan="3"><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["perm_address"]; ?><?php echo ",Block:-".$row["block2"]; ?><?php echo ",Sub-Division:-".$row["subdiv2"]; ?><?php echo ",District:-".$row["perm_dist"]; ?>&nbsp;&nbsp;&nbsp;<?php echo "PIN:-".$row["perm_pin"]; ?>&nbsp;&nbsp;&nbsp;<?php echo  "State:-".$row["State2"]; ?></font></td>
+              <td colspan="3"><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["perm_address"]; ?><?php echo ",Block:-".$row["perm_block"]; ?><?php echo ",Sub-Division:-".$row["perm_subdiv"]; ?><?php echo ",District:-".$row["perm_dist"]; ?>&nbsp;&nbsp;&nbsp;<?php echo "PIN:-".$row["perm_pin"]; ?>&nbsp;&nbsp;&nbsp;<?php echo  "State:-".$row["perm_state"]; ?></font></td>
             </tr>
             <tr> 
               <td height="26"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Email:</strong></font></td>
@@ -119,18 +122,19 @@ td { font-family : verdana;
               <td><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["mobile"]; ?></font></td>
             </tr>
             <tr> 
-              <td height="18" colspan="2"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Educational 
+              <td height="18" colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Educational 
                 Qualification:</strong></font></td>
               <td><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
               <td><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
             </tr>
             <tr> 
-              <td height="209" colspan="4"> <table width="99%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+              <td height="64" colspan="4"> <table width="99%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
                   <tr bgcolor="#CCFFFF"> 
                     <td width="14%"> <div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Qualification</strong></font></div></td>
                     <td width="16%"> <div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Name 
                         of the Institution</strong></font></div></td>
-                    <td width="16%"><div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Year of Passing</strong></font></div></td>
+                    <td width="8%"><div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Year of Passing</strong></font></div></td>
+                    <td width="8%"><div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Subject</strong></font></div></td>
                     <td width="16%"><div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Total Marks</font></strong></div></td>
                     <td width="18%"><div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Marks Obtained</strong></font></div></td>
                     <td width="18%"> <div align="center">
@@ -139,181 +143,187 @@ td { font-family : verdana;
                     </div></td>
                     <td width="18%"> <div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Grade / Division</strong></font></div></td>
                   </tr>
+                  <?php 
+				  $sqledu="select eq.exam as exam, eq.institute as institute, eq.year as year, eq.sub as sub, eq.fullmarks as fullmarks,eq.marksobtain as marksobtain, eq.percentage as percentage, eq.grade as grade from edu_quali as eq where eq.appid='".$appid."' order by eq.id asc";
+				  $eduList=executeSqlQuery($sqledu);
+				  while($eduRow=mysql_fetch_array ($eduList)){
+				  
+				  
+				  ?>
                   <tr> 
-                    <td height="22"> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Madhyamik</strong></font></div></td>
+                    <td height="22"> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>  <?php if ($eduRow["exam"] != "" )
+					 {echo $eduRow["exam"];} else {echo "------";} ?></strong></font></div></td>
                     <td><div>
                       <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["m_inst"] != "" ) {echo $row["m_inst"];} else {echo "------";} ?>
+                        <?php if ($eduRow["institute"] != "" ) {echo $eduRow["institute"];} else {echo "------";} ?>
                       </font></div>
                     </div></td>
                     <td><div>
                       <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["m_year"] != "" ) {echo $row["m_year"];} else {echo "------";} ?>
+                        <?php if ($eduRow["year"] != "" ) {echo $eduRow["year"];} else {echo "------";} ?>
+                      </font></div>
+                    </div></td>
+                    <td align="center"><?php if ($eduRow["sub"] != "" ) {echo $eduRow["sub"];} else {echo "------";} ?></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($eduRow["fullmarks"] != "" ) {echo $eduRow["fullmarks"];} else {echo "------";} ?>
+                        </font></div>
+                    </div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($eduRow["marksobtain"] != "" ) {echo $eduRow["marksobtain"];} else {echo "------";} ?>
                       </font></div>
                     </div></td>
                     <td><div>
                       <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["m_total"] != "" ) {echo $row["m_total"];} else {echo "------";} ?>
+                        <?php if ($eduRow["percentage"] != "" ) {echo $eduRow["percentage"];} else {echo "------";} ?>
                       </font></div>
                     </div></td>
                     <td><div>
                       <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["m_marks"] != "" ) {echo $row["m_marks"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div>
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["m_percent"] != "" ) {echo $row["m_percent"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div>
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["m_grade"] != "" ) {echo $row["m_grade"];} else {echo "------";} ?>
+                        <?php if ($eduRow["grade"] != "" ) {echo $eduRow["grade"];} else {echo "------";} ?>
                       </font></div>
                     </div></td>
                   </tr>
-                  <tr> 
-                    <td height="27"> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Higher 
-                        Secondary</strong></font></div></td>
-                    <td> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"> 
-                      <?php if ($row["h_inst"] != "" ) {echo $row["h_inst"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["h_year"] != "" ) {echo $row["h_year"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div>
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["h_total"] != "" ) {echo $row["h_total"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["h_marks"] != "" ) {echo $row["h_marks"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["h_percent"] != "" ) {echo $row["h_percent"];} else {echo "0";} ?>
-                    </font></div></td>
-                    <td align="center"> <font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["h_grade"] != "" ) {echo $row["h_grade"];} else {echo "------";} ?>
-                      </div> 
-                      </font></td>
-                  </tr>
-                  <tr> 
-                    <td height="34"> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Graduation</strong></font></div></td>
-                    <td> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"> 
-                      <?php if ($row["g_inst"] != "" ) {echo $row["g_inst"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["g_year"] != "" ) {echo $row["g_year"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div>
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["g_total"] != "" ) {echo $row["g_total"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["g_marks"] != "" ) {echo $row["g_marks"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"> <font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["g_percent"] != "" ) {echo $row["g_percent"];} else {echo "0";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["g_grade"] != "" ) {echo $row["g_grade"];} else {echo "------";} ?>
-                    </font></div></td>
-                  </tr>
-                  <tr>
-                    <td height="24"><div align="center"><strong><font size="1" face="Arial, Helvetica, sans-serif">Post Graduation</font></strong></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["p_inst"] != "" ) {echo $row["p_inst"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["p_year"] != "" ) {echo $row["p_year"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div>
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["p_total"] != "" ) {echo $row["p_total"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["p_marks"] != "" ) {echo $row["p_marks"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"> <font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["p_percent"] != "" ) {echo $row["p_percent"];} else {echo "0";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["p_grade"] != "" ) {echo $row["p_grade"];} else {echo "------";} ?>
-                    </font></div></td>
-                  </tr>
-                  <tr>
-                    <td height="32"><div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Other</strong></font></div></td>
-                    <td><div> 
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["oth_inst"] != "" ) {echo $row["oth_inst"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div> 
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["oth_year"] != "" ) {echo $row["oth_year"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["oth_total"] != "" ) {echo $row["oth_total"];} else {echo "0";} ?>
-                    </font></div></td>
-                    <td><div> 
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["oth_marks"] != "" ) {echo $row["oth_marks"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div> 
-                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                        <?php if ($row["oth_percent"] != "" ) {echo $row["oth_percent"];} else {echo "------";} ?>
-                      </font></div>
-                    </div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["oth_grade"] != "" ) {echo $row["oth_grade"];} else {echo "------";} ?>
-                    </font></div></td>
-                  </tr>
-                  <tr> 
-                    <td height="32"> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong> Computer Certificate</strong></font></div></td>
-                    <td> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"> 
-                      <?php if ($row["cert_inst"] != "" ) {echo $row["cert_inst"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["cert_year"] != "" ) {echo $row["cert_year"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["cert_total"] != "" ) {echo $row["cert_total"];} else {echo "0";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["cert_marks"] != "" ) {echo $row["cert_marks"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"> <font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["cert_percent"] != "" ) {echo $row["cert_percent"];} else {echo "------";} ?>
-                    </font></div></td>
-                    <td><div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
-                      <?php if ($row["cert_grade"] != "" ) {echo $row["cert_grade"];} else {echo "------";} ?>
-                    </font></div></td>
-                  </tr>
-                  <tr> 
-                    <td height="31"> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Experience(if 
-                        any)</strong></font></div></td>
-                    <td colspan="6"> <font size="1" face="Arial, Helvetica, sans-serif"> 
-                      <?php if ($row["exprience"] != "" ) {echo $row["exprience"];} else {echo "------";} ?>
-                      </font> <div align="left"></div></td>
-                  </tr>
+                  <?php }
+				  ?>
                 </table></td>
             </tr>
             <tr> 
-              <td height="83" colspan="4"><font color="#000033"><strong><font size="1"> hereby declare that I fulfil the eligibility criteria for the 
+              <td height="16" colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Work Experience in Health Project:</strong></font></td>
+              <td><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+              <td><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+            </tr>
+            <tr> 
+              <td height="67" colspan="4"> <table width="99%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+                  <tr bgcolor="#CCFFFF"> 
+                    <td width="14%"> <div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Name of Project</font></strong></div></td>
+                    <td width="14%"> <div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Project Activities</font></strong></div></td>
+                    <td width="14%"><div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Name of Post in Project (Designation)</font></strong></div></td>
+                    <td width="18%"><div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Organization Conducting the Project</strong></font></div></td>
+                    <td width="8%"><div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">From (DD-MM-YYYY)</font></strong></div></td>
+                    <td width="8%"><div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">To (DD-MM-YYYY)</font></strong></div></td>
+                    <td width="9%"> <div align="center">
+                      <div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Duration of Work (Month)</font></strong></div>
+                    </div></td>
+                    <td width="15%"> <div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Remarks</strong></font></div></td>
+                  </tr>
+                  <?php 
+				  $sqlexp="select * from experience where appid='".$appid."' order by id asc";
+				  $expList=executeSqlQuery($sqlexp);
+				  while($expRow=mysql_fetch_array ($expList)){
+				  
+				  
+				  ?>
+                  <tr> 
+                    <td height="22"> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>  <?php if ($expRow["project"] != "" )
+					 {echo $expRow["project"];} else {echo "------";} ?></strong></font></div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($expRow["activity"] != "" ) {echo $expRow["activity"];} else {echo "------";} ?>
+                      </font></div>
+                    </div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($expRow["duration"] != "" ) {echo $expRow["duration"];} else {echo "------";} ?>
+                      </font></div>
+                    </div></td>
+                    <td align="center"><?php if ($expRow["organization"] != "" ) {echo $expRow["organization"];} else {echo "------";} ?></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php $date= strtotime($expRow["fromdate"]); if (date("d-m-Y ",$date) != "" ) {echo date("d-m-Y ",$date);} else {echo "------";} ?>
+                       
+                        </font></div>
+                    </div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php  $date1= strtotime($expRow["todate"]); if (date("d-m-Y ",$date1) != "" ) {echo date("d-m-Y ",$date1);} else {echo "------";} ?>
+                      </font></div>
+                    </div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($expRow["duration"] != "" ) {echo $expRow["duration"];} else {echo "------";} ?>
+                      </font></div>
+                    </div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($expRow["remarks"] != "" ) {echo $expRow["remarks"];} else {echo "------";} ?>
+                      </font></div>
+                    </div></td>
+                  </tr>
+                  <?php }
+				  ?>
+                </table></td>
+            </tr>
+            <?php 
+			  if($row["compknowledge"]=="Y"){
+				  ?>
+            <tr> 
+              <td height="18" colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Certification on Computer Knowledge:</strong></font></td>
+              <td><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+              <td><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+            </tr>
+            <tr> 
+              <td height="63" colspan="4"> <table width="99%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+                  <tr bgcolor="#CCFFFF"> 
+                    <td width="14%"> <div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Name of Course</font></strong></div></td>
+                    <td width="16%"> <div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Subject Covered</font></strong></div></td>
+                    <td width="8%"><div align="center"><font color="#003399" size="1" face="Arial, Helvetica, sans-serif"><strong>Year of Passing</strong></font></div></td>
+                    <td width="18%"> <div align="center">
+                      <div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Institute</font></strong></div>
+                    </div></td>
+                    <td width="18%"> <div align="center"><strong><font color="#003399" size="1" face="Arial, Helvetica, sans-serif">Course Duration (in Month)</font></strong></div></td>
+                  </tr>
+                  <?php 
+				
+				  $sqlcomp="select * from compknowledge where appid='".$appid."' order by id asc";
+				  $compList=executeSqlQuery($sqlcomp);
+				  while($compRow=mysql_fetch_array ($compList)){
+				  
+				  
+				  ?>
+                  <tr> 
+                    <td height="22"> <div align="center"><font size="1" face="Arial, Helvetica, sans-serif"><strong>  <?php if ($compRow["course"] != "" )
+					 {echo $compRow["course"];} else {echo "------";} ?></strong></font></div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($compRow["subject"] != "" ) {echo $compRow["subject"];} else {echo "------";} ?>
+                      </font></div>
+                    </div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($compRow["year"] != "" ) {echo $compRow["year"];} else {echo "------";} ?>
+                        </font></div>
+                    </div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($compRow["institute"] != "" ) {echo $compRow["institute"];} else {echo "------";} ?>
+                        </font></div>
+                    </div></td>
+                    <td><div>
+                      <div align="center"><font size="1" face="Arial, Helvetica, sans-serif">
+                        <?php if ($compRow["duration"] != "" ) {echo $compRow["duration"];} else {echo "------";} ?>
+                      </font></div>
+                    </div></td>
+                  </tr>
+                  <?php }
+				  }
+				  ?>
+                </table></td>
+            </tr>
+            <tr> 
+              <td height="83" colspan="4"><font size="1" face="Arial, Helvetica, sans-serif"> 
+               I hereby declare that I fulfil the eligibility criteria for the 
                   post in terms of educational qualifications (including percentage 
                   of marks obtained in the examination and certificate course), 
                   experience, age, etc. and I am aware that mere calling for Test 
                   or Interview shall not entail me as fulfilling the conditions 
-                  of eligibility.I also declare that I have applied only for one Block in the District or for District post and if any time it is found that I have applied more than one Block or District post,my candidature is liable to be canceled. I certify that the information given in the 
+                  of eligibility. I also declare that I have applied only for one Block post in the district and if any time it is found that i have applied more than one Block my candidature is liable to canceled. I certify that the information given in the 
                   application is correct and complete to the best of my knowledge 
                   and nothing has been concealed/distorted. I understand that 
                   if at any time I am found to have concealed/distorted any material 
                   information my candidature/appointment is liable to summary 
-              termination without notice or compensation. </font></strong></font></td>
+                  termination without notice or compensation.</font></td>
             </tr>
             <tr> 
               <td height="114" colspan="2"> <div align="left"><font size="1" face="Arial, Helvetica, sans-serif"><br>

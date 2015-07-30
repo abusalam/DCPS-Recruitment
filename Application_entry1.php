@@ -37,20 +37,12 @@ if (trim(document.getElementById('post').value) == "0" )
  {
 		alert("Please select Post");
 		document.getElementById('post').focus();
-		
 		return false; 
  }
   
  else if (trim(document.getElementById('block').value) == '0')
  {
-		alert("Please Select Block");
-		document.getElementById('block').focus();
-		return false; 
- } 
-  
- else if (trim(document.getElementById('subdiv').value) == '0')
- {
-		alert("Please Select Sub-Division");
+		alert("Please Select District/Block");
 		document.getElementById('block').focus();
 		return false; 
  } 
@@ -164,67 +156,248 @@ else if (trim(document.getElementById('name').value) == '')
 		return false; 
  }
  
-	else if(trim(document.getElementById('ed011').value) == "")
+	else if(trim(document.getElementById('ed01').value) == "")
 	{
 		alert("Please enter Madhyamik Institution Name ");
-		document.getElementById('ed011').focus();
+		document.getElementById('ed01').focus();
 		return false; 
 	}
-	else if(trim(document.getElementById('ed021').value) == "")
+	else if(trim(document.getElementById('ed02').value) == "")
 	{
 		alert("Please enter Madhyamik Passing Year");
-		document.getElementById('ed021').focus();
+		document.getElementById('ed02').focus();
 		return false; 
 	}
-	else if (!isInteger(trim(document.getElementById('ed021').value)) || (trim(document.getElementById('ed021').value)).length != 4 )
+	else if (!isInteger(trim(document.getElementById('ed02').value)) || (trim(document.getElementById('ed02').value)).length != 4 )
 	{
 		alert("Please Enter  Correct Madhyamik passing Year");
-		document.getElementById('ed021').focus();
+		document.getElementById('ed32').focus();
 		return false;  
 	}
-	else if(trim(document.getElementById('ed041').value) == "")
+	else if(trim(document.getElementById('ed03').value) == "")
 	{
 		alert("Please enter Madhyamik Total Marks ");
-		document.getElementById('ed041').focus();
+		document.getElementById('ed03').focus();
 		return false; 
 	}
-	else if (!isInteger(trim(document.getElementById('ed041').value)))
+	else if (!isInteger(trim(document.getElementById('ed03').value)))
 	{
 		alert("Please Enter Madhyamik Total Marks in Integer");
-		document.getElementById('ed041').focus();
+		document.getElementById('ed03').focus();
 		return false;  
 	}
-	else if(trim(document.getElementById('ed051').value) == "")
+	else if(trim(document.getElementById('ed04').value) == "")
 	{
 		alert("Please enter Madhyamik Marks ");
-		document.getElementById('ed051').focus();
+		document.getElementById('ed04').focus();
 		return false; 
 	}
-	else if ( isNaN(document.getElementById('ed051').value))  
+	else if ( isNaN(document.getElementById('ed04').value))  
 	{
 		alert("Please enter Correct Madhyamik Marks");
-		document.getElementById('ed051').focus();
+		document.getElementById('ed04').focus();
 		return false;	
 	}
-	else if(trim(document.getElementById('ed061').value) == "")
+	else if(trim(document.getElementById('ed05').value) == "")
 	{
 		alert("Please enter Madhyamik percentage ");
-		document.getElementById('ed061').focus();
+		document.getElementById('ed05').focus();
 		return false; 
 	}
-	else if ( parseFloat(document.getElementById('ed061').value) < 0 || parseFloat(document.getElementById('ed061').value) > 100 )  
+	else if ( parseFloat(document.getElementById('ed05').value) < 0 || parseFloat(document.getElementById('ed05').value) > 100 )  
 	{
 		alert("Please enter Correct Madhyamik Percentage ");
-		document.getElementById('ed061').focus();
+		document.getElementById('ed05').focus();
 		return false;	
 	}
-	else if (trim(document.getElementById('ed071').value) == "")
+	else if (trim(document.getElementById('ed06').value) == "")
 	{
 		alert("Please enter Madhyamik Grade");
-		document.getElementById('ed071').focus();
+		document.getElementById('ed06').focus();
 		return false; 
 	}
-	 else if ( trim(document.getElementById('pin').value) == "" || (trim(document.getElementById('pin').value)).length != 4 ) {
+	else if(trim(document.getElementById('ed11').value) == "")
+	{
+		alert("Please enter Higher Secondary Institution Name ");
+		document.getElementById('ed11').focus();
+		return false; 
+	}
+	else if(trim(document.getElementById('ed12').value) == "")
+	{
+		alert("Please enter Higher Secondary Passing Year");
+		document.getElementById('ed12').focus();
+		return false; 
+	}
+	else if (!isInteger(trim(document.getElementById('ed12').value)) || (trim(document.getElementById('ed12').value)).length != 4 )
+	{
+		alert("Please Enter Correct Higher Secondary passing Year");
+		document.getElementById('ed12').focus();
+		return false;  
+	}
+	else if(trim(document.getElementById('ed13').value) == "")
+	{
+		alert("Please enter Higher Secondary Total Marks ");
+		document.getElementById('ed13').focus();
+		return false; 
+	}
+	else if (!isInteger(trim(document.getElementById('ed13').value)))
+	{
+		alert("Please Enter Higher Secondary Total Marks in Integer");
+		document.getElementById('ed13').focus();
+		return false;  
+	}
+	else if(trim(document.getElementById('ed14').value) == "")
+	{
+		alert("Please enter Higher Secondary Marks ");
+		document.getElementById('ed14').focus();
+		return false; 
+	}
+	else if ( isNaN(document.getElementById('ed14').value))  
+	{
+		alert("Please enter Correct Higher Secondary Marks");
+		document.getElementById('ed14').focus();
+		return false;	
+	}
+	else if(trim(document.getElementById('ed15').value) == "")
+	{
+		alert("Please enter Higher Secondary percentage ");
+		document.getElementById('ed15').focus();
+		return false; 
+	}
+	else if ( parseFloat(document.getElementById('ed15').value) < 0 || parseFloat(document.getElementById('ed15').value) > 100 )  
+	{
+		alert("Please enter Correct Higher Secondary Percentage ");
+		document.getElementById('ed15').focus();
+		return false;	
+	}
+	else if (trim(document.getElementById('ed16').value) == "")
+	{
+		alert("Please enter Higher Secondary Grade");
+		document.getElementById('ed16').focus();
+		return false; 
+	}
+	else if(trim(document.getElementById('ed21').value) == "")
+	{
+		alert("Please enter Graduation Institution Name ");
+		document.getElementById('ed21').focus();
+		return false; 
+	}
+	else if(trim(document.getElementById('ed22').value) == "")
+	{
+		alert("Please enter Graduation Passing Year");
+		document.getElementById('ed22').focus();
+		return false; 
+	}
+	else if (!isInteger(trim(document.getElementById('ed22').value)) || (trim(document.getElementById('ed22').value)).length != 4 )
+	{
+		alert("Please Enter Correct Graduation passing Year");
+		document.getElementById('ed22').focus();
+		return false;  
+	}
+	else if(trim(document.getElementById('ed23').value) == "")
+	{
+		alert("Please enter Graduation Total Marks ");
+		document.getElementById('ed23').focus();
+		return false; 
+	}
+	else if (!isInteger(trim(document.getElementById('ed23').value)))
+	{
+		alert("Please Enter Graduation Total Marks in Integer");
+		document.getElementById('ed23').focus();
+		return false;  
+	}
+	else if(trim(document.getElementById('ed24').value) == "")
+	{
+		alert("Please enter Graduation Marks ");
+		document.getElementById('ed24').focus();
+		return false; 
+	}
+	else if ( isNaN(document.getElementById('ed24').value))  
+	{
+		alert("Please enter Correct Graduation Marks");
+		document.getElementById('ed24').focus();
+		return false;	
+	}
+	else if(trim(document.getElementById('ed25').value) == "")
+	{
+		alert("Please enter Graduation percentage ");
+		document.getElementById('ed25').focus();
+		return false; 
+	}
+	else if ( parseFloat(document.getElementById('ed25').value) < 0 || parseFloat(document.getElementById('ed25').value) > 100 )  
+	{
+		alert("Please enter Correct Graduation Percentage ");
+		document.getElementById('ed25').focus();
+		return false;	
+	}
+	else if (trim(document.getElementById('ed26').value) == "")
+	{
+		alert("Please enter Graduation Grade");
+		document.getElementById('ed26').focus();
+		return false; 
+	}
+	else if(trim(document.getElementById('ed31').value) == "")
+	{
+		alert("Please enter 'O' Level Institution Name ");
+		document.getElementById('ed31').focus();
+		return false; 
+	}
+	else if(trim(document.getElementById('ed32').value) == "")
+	{
+		alert("Please enter 'O' Level Passing Year");
+		document.getElementById('ed32').focus();
+		return false; 
+	}
+	else if (!isInteger(trim(document.getElementById('ed32').value)) || (trim(document.getElementById('ed32').value)).length != 4 )
+	{
+		alert("Please Enter Correct 'O' Level passing Year");
+		document.getElementById('ed32').focus();
+		return false;  
+	}
+	else if(trim(document.getElementById('ed33').value) == "")
+	{
+		alert("Please enter 'O' Level Total Marks ");
+		document.getElementById('ed33').focus();
+		return false; 
+	}
+	else if (!isInteger(trim(document.getElementById('ed33').value)))
+	{
+		alert("Please Enter 'O' Level Total Marks in Integer");
+		document.getElementById('ed33').focus();
+		return false;  
+	}
+	else if(trim(document.getElementById('ed34').value) == "")
+	{
+		alert("Please enter 'O' Level Marks ");
+		document.getElementById('ed34').focus();
+		return false; 
+	}
+	else if ( isNaN(document.getElementById('ed34').value))  
+	{
+		alert("Please enter Correct 'O' Level Marks");
+		document.getElementById('ed34').focus();
+		return false;	
+	}
+	else if(trim(document.getElementById('ed35').value) == "")
+	{
+		alert("Please enter 'O' Level percentage ");
+		document.getElementById('ed35').focus();
+		return false; 
+	}
+	else if ( parseFloat(document.getElementById('ed35').value) < 0 || parseFloat(document.getElementById('ed35').value) > 100 )  
+	{
+		alert("Please enter Correct 'O' Level Percentage ");
+		document.getElementById('ed35').focus();
+		return false;	
+	}
+	else if (trim(document.getElementById('ed36').value) == "")
+	{
+		alert("Please enter 'O' Level Grade");
+		document.getElementById('ed36').focus();
+		return false; 
+	}
+	
+ else if ( trim(document.getElementById('pin').value) == "" || (trim(document.getElementById('pin').value)).length != 4 ) {
 		alert("Please enter the pin which will be mandatorily used for uploading Image and Signature");
 		document.getElementById('pin').focus();
 		return false;	
@@ -244,7 +417,7 @@ else if (trim(document.getElementById('name').value) == '')
 </head>
 <body>
 
-<form name="Registration" id = "Registration" method="POST" action="" >
+<form name="Registration" id = "Registration" method="POST" action="Application_entry.php" >
 <DIV align="left">
     
     <table width="100%" height="80">
@@ -257,7 +430,7 @@ else if (trim(document.getElementById('name').value) == '')
     <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
       <tr>
                 <td width="9"><img src="image/h_curve.gif" height="27" width="9"></td>
-				<td class="header" bgcolor="#E9FAFE" width="1800">Recruitment For Block ASHA Facilitator (Contractual) under Purba Medinipur District </td>
+				<td class="header" bgcolor="#E9FAFE" width="1800">Recruitment For Block ASHA Facilitator(Contractual) under Purba Medinipur District </td>
 				<td width="30"><img src="image/h_cut.gif" height="27" width="28"></td>
 				
         <td class="header" align="right" width="415"><div align="left"><strong><font color="#FF0000" size="2">* 
@@ -269,7 +442,7 @@ else if (trim(document.getElementById('name').value) == '')
       <tr bgcolor="#CCFFFF"> 
         <TD  class="tablecontent1"height="41" colspan="6"> <div align="center"><strong><font color="#FFFF00" size="5" face="Monotype Corsiva"><em><font color="#000000">Post 
             Applied For <font color="#FF0000">*</font></font><font color="#FF0000">:</font><font color="#3399CC"> 
-            <select name="post" id = "post"  >
+            <select name="post" class="listMenu" id = "post"  >
               <?php
              	$sqlstr = "select * from post";
 				$rec = executeSqlQuery($sqlstr);
@@ -287,7 +460,7 @@ else if (trim(document.getElementById('name').value) == '')
       <tr bgcolor="#CCFFFF">
         <TD  class="tablecontent1"height="41" colspan="3"><div align="center"><strong><font color="#FFFF00" size="5" face="Monotype Corsiva"><em><font color="#000000"> Applied For Sub-Division :<font color="#FF0000"> *</font></font><font color="#FF0000">:</font></em></font></strong></div></TD>
         <TD  class="tablecontent1"height="41"><strong><font color="#FFFF00" size="5" face="Monotype Corsiva"><em><font color="#3399CC">
-          <select name="subdiv" id = "subdiv" onChange="showBlock();"  >
+          <select name="subdiv" class="listMenu" id = "subdiv" onChange="showBlock();"  >
               <?php
              	$sqlsub = "select * from subdivision";
 				$subd = executeSqlQuery($sqlsub);
@@ -303,7 +476,7 @@ else if (trim(document.getElementById('name').value) == '')
         </span></font></em></font></strong></TD>
         <TD width="272"height="41"  class="tablecontent1"><strong><font color="#FFFF00" size="5" face="Monotype Corsiva"><em><font color="#000000">Applied For  Block:<font color="#FF0000"> *</font></font><font color="#FF0000">:</font></em></font></strong></TD>
         <TD width="425"  class="tablecontent1"><strong><font color="#FFFF00" size="5" face="Monotype Corsiva"><em><font color="#3399CC">
-          <select name="block3" id="block">
+          <select name="block3" class="listMenu" id="block">
             <option value="0" selected="selected" >--Select Applied Block--</option>
            
           </select>
@@ -605,8 +778,8 @@ else if (trim(document.getElementById('name').value) == '')
       <td height="2" class="tablecontent1" colspan="3"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Educational Qualification :</strong></font> </td>
         <td height="2" class="tablecontent1" colspan="3"></tr>
       <tr> 
-        <td height="163" colspan="6"> <font color="#000033"><strong><font size="2" face="Arial, Helvetica, sans-serif"> 
-          </font> </strong> </font> <table id="education" width="100%" height="118" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
+        <td height="163" colspan="6" > <font color="#000033"><strong><font size="2" face="Arial, Helvetica, sans-serif"> 
+          </font> </strong> </font> <table id="education" width="99%" height="118" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
             <tr> 
               <td width="11%" height="10"> 
             <tr bgcolor="#CCFFFF"> 
@@ -634,10 +807,7 @@ else if (trim(document.getElementById('name').value) == '')
 				echo "<option value=\"0\">--Select Examination Passed--</>";
 			 	while ($row = mysql_fetch_array($exam))
 				{
-					
-					?>
-                        <option value="<?php echo $row["desc"]; ?>"><?php echo $row["desc"] ?></option>
-                        <?php
+					echo "<option value=" . $row["desc"] . ">" . $row["desc"]. "</>";
 				
 				}
 	?>
@@ -676,34 +846,34 @@ else if (trim(document.getElementById('name').value) == '')
       <tr> 
         <td height="205" colspan="6"> <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
             <tr> 
-              <td width="10%" class="tablecontent1"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Experience (If 
+              <td width="10%" class="tablecontent1"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Experience(If 
                 Any):-</strong></font></td>
-              <td class="tablecontent1" height="60" colspan="4">&nbsp;</td>
+              <td class="tablecontent1" height="60" >&nbsp;</td>
             </tr>
             <tr> 
         <td height="163" colspan="5"> <font color="#000033"><strong><font size="2" face="Arial, Helvetica, sans-serif"> 
           </font> </strong> </font> <table id="experience" width="100%" height="118" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
             <tr> 
-              <td width="18%" height="10"> 
+              <td width="19%" height="10"> 
             <tr bgcolor="#CCFFFF"> 
               <td class="tablecontent1"> <div align="center"><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Name of Project</font></strong></div></td>
-              <td width="18%" class="tablecontent1"> <div align="center"><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Project Activities</font></strong></div></td>
-              <td width="14%" class="tablecontent1"><div align="center">
+              <td width="19%" class="tablecontent1"> <div align="center"><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Project Activities</font></strong></div></td>
+              <td width="10%" class="tablecontent1"><div align="center">
                 <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Name of Post in Project </font></strong><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">(Designation)</font></strong></p>
               </div></td>
               <td width="14%" class="tablecontent1"><div align="center">
                 <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Organization Conducting the project</font></strong></p>
               </div></td>
-              <td width="10%" align="center" valign="middle" class="tablecontent1"><div align="center">
-                <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">From (dd/mm/yyyy)</font></strong></p>
+              <td width="7%" align="center" valign="middle" class="tablecontent1"><div align="center">
+                <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">From(dd/mm/yyyy)</font></strong></p>
               </div></td>
-              <td width="9%" class="tablecontent1"><div align="center">
-                <p><font color="#0000CC"><strong><font size="2" face="Arial, Helvetica, sans-serif">To </font></strong></font><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">(dd/mm/yyyy)</font></strong></p>
+              <td width="8%" class="tablecontent1"><div align="center">
+                <p><font color="#0000CC"><strong><font size="2" face="Arial, Helvetica, sans-serif">To</font></strong></font><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">(dd/mm/yyyy)</font></strong></p>
               </div></td>
               <td colspan="2" class="tablecontent1"> <div align="center">
                 <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Duration of work in month</font></strong></p>
               </div></td>
-               <td width="11%" colspan="2" class="tablecontent1"> <div align="center"><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Remarks</font></strong></div></td>
+               <td width="15%" colspan="2" class="tablecontent1"> <div align="center"><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Remarks</font></strong></div></td>
             </tr>
             <tr>
               <td height="48" bgcolor="#FFFFFF"><div align="center">
@@ -719,15 +889,15 @@ else if (trim(document.getElementById('name').value) == '')
                 <input name="exp031" type="text" id="exp031" value="" size="30" >
               </div></td>
               <td><div align="center">
-                <input name="exp041" type="text" id="exp041" size="15" >
+                <input type="text" name="exp041" id="exp041" >
               </div></td>
               <td><div align="center">
-                <input name="exp051" type="text" id="exp051" value="" size="15"  >
+                <input name="exp051" type="text" id="exp051" value=""  >
               </div></td>
               <td colspan="2" ><div align="center">
                 <input name="exp061" type="text" id="exp061" value="" size="15" >
               </div></td>
-               <td width="11%" colspan="2" ><div align="center">
+               <td width="15%" colspan="2" ><div align="center">
                 <input name="exp071" type="text" id="exp071" value="" size="25" >
               </div></td>
             </tr>
@@ -743,7 +913,7 @@ else if (trim(document.getElementById('name').value) == '')
         <td height="29" colspan="5"> <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
           <tr> 
             <td width="24%" class="tablecontent1"><font size="2" face="Arial, Helvetica, sans-serif">
-              <strong>Computer knowledge (MS Office and Internet ) :-</strong></font></td>
+              <strong>Computer knowledge (MS Office and Internet) :-</strong></font></td>
             <td width="5%" class="tablecontent1"><label>
               <input type="radio" name="computer" value="Y" id="computer_0" onClick="showTable(1);">
               <font size="2" face="Arial, Helvetica, sans-serif"> Yes</font></label></td>
@@ -761,15 +931,15 @@ else if (trim(document.getElementById('name').value) == '')
               <td width="20%" height="10"> 
             <tr bgcolor="#CCFFFF"> 
               <td class="tablecontent1"> <div align="center"><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Name of Course</font></strong></div></td>
-              <td width="30%" class="tablecontent1"> <div align="center"><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Subject Covered</font></strong></div></td>
+              <td width="30%" class="tablecontent1"> <div align="center"><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Subject covered</font></strong></div></td>
               <td width="10%" class="tablecontent1"><div align="center">
-                <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Year of Passing </font></strong></p>
+                <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Year of passing </font></strong></p>
               </div></td>
-              <td width="27%" class="tablecontent1"><div align="center">
+              <td width="30%" class="tablecontent1"><div align="center">
                 <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Institute</font></strong></p>
               </div></td>
-              <td width="13%" align="center" valign="middle" class="tablecontent1"><div align="center">
-                <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Course duration (Month)</font></strong></p>
+              <td width="10%" align="center" valign="middle" class="tablecontent1"><div align="center">
+                <p><strong><font color="#0000CC" size="2" face="Arial, Helvetica, sans-serif">Course duration</font></strong></p>
               </div></td>
               </tr>
             <tr width="100%">
@@ -810,7 +980,7 @@ else if (trim(document.getElementById('name').value) == '')
                   of marks obtained in the examination and certificate course), 
                   experience, age, etc. and I am aware that mere calling for Test 
                   or Interview shall not entail me as fulfilling the conditions 
-                  of eligibility. I also declare that I have applied only for one Block post in the district and if any time it is found that i have applied more than one Block my candidature is liable to canceled. I certify that the information given in the 
+                  of eligibility. I certify that the information given in the 
                   application is correct and complete to the best of my knowledge 
                   and nothing has been concealed/distorted. I understand that 
                   if at any time I am found to have concealed/distorted any material 
@@ -823,7 +993,7 @@ else if (trim(document.getElementById('name').value) == '')
       </tr>
       <tr> 
         <td height="28" colspan="6" align="right"> <div align="center"><strong><font color="#000033" size="2" face="Arial, Helvetica, sans-serif"> 
-            <input type="button" name="Submit" value="Save" Onclick = "validate();" class="button" >
+            <input type="submit" name="Submit" value="Save" Onclick = "validate()" class="button" >
             <input name="myear" id="myear" value="1969" type="hidden">
             <input name="Exit" type="button" id="Exit" value="Exit" class="button" onClick="window.close();" >
             </font></strong></div>
@@ -835,7 +1005,7 @@ else if (trim(document.getElementById('name').value) == '')
       <td height="2" colspan="2"> </tr>
     </table>
 </div>
-<table width="100%">
+<table width="108%">
 <tr>
     <td class="tablecontent1" height="24">
 <div align="center"><span class="link1"><font color="#00a2cf">
@@ -1211,8 +1381,6 @@ function getYearList() {
         xmlhttp.send();
     }
 }
-
-
 </script>
 
 

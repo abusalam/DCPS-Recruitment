@@ -5,7 +5,7 @@ function DisplayDefaultForm()
 ?>
 <html><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcome to DCPS Online Portal-Upload Photo</title>
+<title>Welcome to Online Portal-Upload Photo</title>
 <link href="CSS/inb.css" rel="stylesheet" type="text/css">
 </head>
 <body  topmargin="0" oncontextmenu="return false;" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
@@ -56,26 +56,26 @@ Allowed Signature Size – 10 KB to 20KB</span>					  </td>
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
               <tbody><tr>
                 <td><form id="login_frm" name="login_frm" method="POST" enctype="multipart/form-data" action=<?php echo htmlspecialchars( $_SERVER['PHP_SELF']); ?>>
-                          <table align="center" border="0" cellpadding="2" cellspacing="2" width="687">
+                          <table align="center" border="0" cellpadding="2" cellspacing="2" width="725">
                             <tbody>
                               <tr> 
-                                <td class="tablecontent1" align="left" valign="top" width="147">Registration 
+                                <td class="tablecontent1" align="left" valign="top" width="178">Registration 
                                   No <span class="alert">*</span>:</td>
-                                <td width="408" align="left" valign="top" class="tablecontent1"> 
+                                <td width="511" align="left" valign="top" class="tablecontent1"> 
                                   <input class="textbox2" name="appid" id="appid" value="" ></td>
                               </tr>
 							  <tr> 
-                                <td class="tablecontent1" align="left" valign="top" width="147">Pin 
+                                <td class="tablecontent1" align="left" valign="top" width="178">Pin 
                                    <span class="alert">*</span>:</td>
-                                <td width="408" align="left" valign="top" class="tablecontent1"> 
+                                <td width="511" align="left" valign="top" class="tablecontent1"> 
                                   <input name="pin" class="textbox2" id="pin" size="4" maxlength="4" type="password" value="">
                                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="forgetpin.php"><font color="#006699" size="1" face="Arial, Helvetica, sans-serif">Forgot 
                                   your Pin?</font></a></td>
                               </tr>
                               <tr> 
-                                <td class="tablecontent1" align="left" valign="top" width="147">Upload 
+                                <td class="tablecontent1" align="left" valign="top" width="178">Upload 
                                   photo<span class="alert">*</span>:</td>
-                                <td width="408" align="left" valign="top" class="tablecontent1"> 
+                                <td width="511" align="left" valign="top" class="tablecontent1"> 
                                   <input name="userfile" id="userfile" type="file" size="50" value=""> 
                                 </td>
                               </tr>
@@ -102,12 +102,12 @@ Allowed Signature Size – 10 KB to 20KB</span>					  </td>
                               <tr> 
                                 <td colspan="2" class="tablecontent1" align="center" valign="top"><a href="note.php" target="_blank" class="linkfooter" onClick="javascript:mypopup('note1.php','800','700')">Steps 
                                   to enable JavaScript in Internet Explorer versions 
-                                  (6.0,7.0,8.0),Mozilla Firefox3.0, Google Chrome2.0</a></td>
+                                  (8.0,9.0),Mozilla Firefox30.0, Google Chrome44.0</a></td>
                               </tr>
                               <tr> 
                                 <td colspan="2" class="tablecontent1" align="center" valign="top"><font color="#0099CC">Design 
                                   and Develped by National Informatics Centre 
-                                  and Content Provided By DCPS Purba Medinipur 
+                                  and Content Provided By </font><font color="#00a2cf">District Administration</font><font color="#0099CC"> Purba Medinipur 
                                   West Bengal </font></td>
                               </tr>
                             </tbody>

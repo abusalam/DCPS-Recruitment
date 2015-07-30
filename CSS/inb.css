@@ -125,9 +125,9 @@ a.link4:hover {
 	font-family: tahoma;
 	font-size: 12px;
 	font-weight: normal;
-	background-color: #EEF7FD;
+	background-color: rgba(155, 192, 210, 0.7);
 	height: 18px;
-	color: #000000;
+	color: #0A0A0B;
 	top: 5px;
 	left: 5px;
 	right: 5px;
@@ -266,8 +266,7 @@ a.Whitelink:hover {
 .listMenu{
 	  border:1px solid #999999; 
      font-family:tahoma;
-	font-size:11px;
-    color:#606A74;
+	
 }
 
 .listMenudisable{

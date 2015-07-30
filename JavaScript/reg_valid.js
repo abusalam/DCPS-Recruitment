@@ -995,7 +995,7 @@ function setAge()
 				
 					if(document.getElementById('seldobmon').value > '01')
 					{
-						alert('Date Of Birth should be between '+end+' to '+st);
+						alert("Date Of Birth for UR should be between 01/01/1974 to 01/01/1996 \n\n Date Of Birth for SC/ST should be between 01/01/1969 to 01/01/1996 \n\n Date Of Birth for OBC-A/OBC-B should be between 01/01/1971 to 01/01/1996");
 						document.getElementById("seldobday").focus();
 						document.getElementById('txtage').value='';	
 						return false;
@@ -1006,7 +1006,7 @@ function setAge()
 					{
 						if(document.getElementById("seldobday").value > '01')
 						{
-							alert('Date Of Birth should be between '+end+' to '+st);
+							alert("Date Of Birth for UR should be between 01/01/1974 to 01/01/1996 \n\n Date Of Birth for SC/ST should be between 01/01/1969 to 01/01/1996 \n\n Date Of Birth for OBC-A/OBC-B should be between 01/01/1971 to 01/01/1996");
 							document.getElementById("seldobday").focus();
 							document.getElementById('txtage').value='';	
 							return false;
@@ -1073,7 +1073,7 @@ function setAge()
 				{
 					if(document.getElementById("seldobday").value < '02')
 					{
-						alert('Date Of Birth should be between '+end+' to '+st);
+						alert("Date Of Birth for UR should be between 01/01/1974 to 01/01/1996 \n\n Date Of Birth for SC/ST should be between 01/01/1969 to 01/01/1996 \n\n Date Of Birth for OBC-A/OBC-B should be between 01/01/1971 to 01/01/1996");
 						document.getElementById("seldobday").focus();
 						document.getElementById('txtage').value='';	
 						return false;
@@ -4199,7 +4199,7 @@ function validate(submit_type,step_no)
 		
 	if(document.getElementById('txtage').value == "")
 	{
-		alert("Date Of Birth should be between '"+st_age+"' to '"+end_age+"'");
+		alert("Date Of Birth for UR should be between 01/01/1974 to 01/01/1996\nDate Of Birth for SC\ST should be between 01/01/1969 to 01/01/1996\n Date Of Birth for OBC-A/OBC-B should be between 01/01/1971 to 01/01/1996");
 		document.getElementById('seldobyear').focus();
 		return false;	
 	}
