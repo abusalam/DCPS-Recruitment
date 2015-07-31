@@ -20,7 +20,7 @@ saveCode = "";
 
 function myFunc(b) {
     if (window.event.keyCode < 16 && window.event.keyCode > 18) {
-       // window.open("alert.html", "winalert", "top=300,left=300,width=150,height=100");
+        // window.open("alert.html", "winalert", "top=300,left=300,width=150,height=100");
         return false;
     }
 }
@@ -300,14 +300,14 @@ fKeyMap = [{
 
 function doKeyDown(l) {
     l = (isNS) ? l : window.event;
-    var m = l.keyCode ? l.keyCode : l.which ? l.which : l.charCode;  
-	var e = (isNS) ? l.target : l.srcElement;
+    var m = l.keyCode ? l.keyCode : l.which ? l.which : l.charCode;
+    var e = (isNS) ? l.target : l.srcElement;
     var i = l.shiftKey;
     var j = l.ctrlKey;
     var k = l.altKey;
-   /*if (m == 9) {
-        Stop(l)
-    }*/
+    /*if (m == 9) {
+     Stop(l)
+     }*/
     if (m >= 13 && m <= 15) {
         Stop(l)
     }
@@ -329,14 +329,14 @@ function doKeyDown(l) {
     for (var n = 0; n < fKeyMap.length; n++) {
         if (fKeyMap[n].keyCode == m && fKeyMap[n].shift == i && fKeyMap[n].ctrl == j && fKeyMap[n].alt == k) {
             if (fKeyMap[n].isMapped) {
-                if (m == 8 ) {					                    
-					if(e.type!=undefined  && e.type.match("text") && e.readOnly == false)
-						return true;
-					if(e.type!=undefined  && e.type.match("password") && e.readOnly == false)
-						return true;	
-						
+                if (m == 8) {
+                    if (e.type != undefined && e.type.match("text") && e.readOnly == false)
+                        return true;
+                    if (e.type != undefined && e.type.match("password") && e.readOnly == false)
+                        return true;
+
                 }
-				Stop(l)
+                Stop(l)
             } else {
                 return true
             }
@@ -369,15 +369,13 @@ function rtrim(c, d) {
     return c.replace(new RegExp("[" + d + "]+$", "g"), "")
 };
 
-function captureTab(h)
-{
-	var g = (navigator.appName == "Netscape") ? 1 : 0;
-   	h = (g) ? h : window.event;
-	if (h.keyCode == 9)
-	{
-		return true;
-	}else
-		return false;
+function captureTab(h) {
+    var g = (navigator.appName == "Netscape") ? 1 : 0;
+    h = (g) ? h : window.event;
+    if (h.keyCode == 9) {
+        return true;
+    } else
+        return false;
 }
 
 
