@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+include('settings.inc.php');
 function application_Register()
 {
     ?>
@@ -10,8 +11,8 @@ function application_Register()
 
         <script language="javascript" type="text/javascript" src="JavaScript/reg_valid.js"></script>
         <script language="javascript" type="text/javascript">
-            var AgeAsOfDate = '01/01/2014';
-            var AgeMinDate1 = '01/01/1996';
+            var AgeAsOfDate = '01/01/2015';
+            var AgeMinDate1 = '01/01/1997';
             var AgeMaxDate1 = '01/01/1969';
             function updateaddress() {
                 if (document.getElementById('checkbox1').checked) {
@@ -40,17 +41,17 @@ function application_Register()
                     return false;
                 }
 
-                else if (trim(document.getElementById('block').value) == '0') {
-                    alert("Please Select Block");
-                    document.getElementById('block').focus();
-                    return false;
-                }
-
-                else if (trim(document.getElementById('subdiv').value) == '0') {
-                    alert("Please Select Sub-Division");
-                    document.getElementById('block').focus();
-                    return false;
-                }
+//                else if (trim(document.getElementById('block').value) == '0') {
+//                    alert("Please Select Block");
+//                    document.getElementById('block').focus();
+//                    return false;
+//                }
+//
+//                else if (trim(document.getElementById('subdiv').value) == '0') {
+//                    alert("Please Select Sub-Division");
+//                    document.getElementById('block').focus();
+//                    return false;
+//                }
                 else if (trim(document.getElementById('name').value) == '') {
                     alert("Please enter Name");
                     document.getElementById('name').focus();
@@ -214,35 +215,25 @@ function application_Register()
     <body>
 
     <form name="Registration" id="Registration" method="POST" action="">
-        <DIV align="left">
+        <div align="left">
 
-            <table width="100%" height="80">
-                <tr>
-                    <td height="80" align="left">
-                        <div align="left"><img src="image/banner.gif" width="63%" height="80">
-                        </div>
-                    </td>
-                </tr>
-            </table>
+            <div align="left">
+                <img class="logo" src="image/Emblem_of_India.png" width="60">
 
-            <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                    <td width="9"><img src="image/h_curve.gif" height="27" width="9"></td>
-                    <td class="header" bgcolor="#E9FAFE" width="1800">Recruitment For Block ASHA Facilitator
-                        (Contractual) under Purba Medinipur District
-                    </td>
-                    <td width="30"><img src="image/h_cut.gif" height="27" width="28"></td>
-
-                    <td class="header" align="right" width="415">
-                        <div align="left"><strong><font color="#FF0000" size="2">*
-                                    Mandatory Field</font></strong></div>
-                    </td>
-                </tr>
-            </table>
-
+                <div class="site-head">
+                    <h2>Government of West Bengal</h2>
+                    <strong>Office of the District Magistrate</strong><br/>
+                    <span><?php echo ORG; ?></span><br/>
+                    <span><?php echo DISTRICT; ?></span>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+            <div class="header">
+                <?php echo APP_TITLE; ?>
+            </div>
             <table width="100%" height="977">
                 <tr bgcolor="#CCFFFF">
-                    <TD class="tablecontent1" height="41" colspan="6">
+                    <td class="tablecontent1" height="41" colspan="6">
                         <div align="center"><strong><font color="#FFFF00" size="5" face="Monotype Corsiva"><em><font
                                             color="#000000">Post
                                             Applied For <font color="#FF0000">*</font></font><font
@@ -260,9 +251,9 @@ function application_Register()
                                                 ?>
                                             </select>
                                         </font></em></font></strong></div>
-                    </TD>
+                    </td>
                 </tr>
-                <tr bgcolor="#CCFFFF">
+                <!--tr bgcolor="#CCFFFF">
                     <TD class="tablecontent1" height="41" colspan="3">
                         <div align="center"><strong><font color="#FFFF00" size="5" face="Monotype Corsiva"><em><font
                                             color="#000000"> Applied For Sub-Division :<font color="#FF0000">
@@ -273,15 +264,15 @@ function application_Register()
                                         color="#3399CC">
                                         <select name="subdiv" id="subdiv" onChange="showBlock();">
                                             <?php
-                                            $sqlsub = "select * from subdivision";
-                                            $subd = executeSqlQuery($sqlsub);
-                                            echo "<option value=\"0\">--Select Sub-Division--</>";
-                                            while ($row1 = mysql_fetch_array($subd)) {
+                $sqlsub = "select * from subdivision";
+                $subd = executeSqlQuery($sqlsub);
+                echo "<option value=\"0\">--Select Sub-Division--</>";
+                while ($row1 = mysql_fetch_array($subd)) {
 
-                                                echo "<option value=" . $row1["sdiv_cd"] . ">" . $row1["subdiv"] . "</>";
-                                            }
+                    echo "<option value=" . $row1["sdiv_cd"] . ">" . $row1["subdiv"] . "</>";
+                }
 
-                                            ?>
+                ?>
                                         </select>
                                         </span></font></em></font></strong></TD>
                     <TD width="272" height="41" class="tablecontent1"><strong><font color="#FFFF00" size="5"
@@ -297,16 +288,8 @@ function application_Register()
                                         </select>
                                         </span></font></em></font></strong></TD>
 
-                </tr>
+                </tr-->
                 <tr bgcolor="#CCFFFF">
-                    <TD class="tablecontent1" height="41" colspan="6">
-                        <div align="center"></div>
-                    </TD>
-
-                </tr>
-                <tr>
-                    <td width="144" height="2">
-                <tr>
                     <td class="tablecontent1" width="144" height="34">
                         <div align="left"><font color="#000033"><strong><font size="2"
                                                                               face="Arial, Helvetica, sans-serif">Name
@@ -340,29 +323,37 @@ function application_Register()
                                             color="#FF0000">*</font>:</font></strong></font></div>
                     </td>
                     <td colspan="2" class="tablecontent1">
-                        <div align="left"><font color="#000033"><strong><font size="2"
-                                                                              face="Arial, Helvetica, sans-serif">
+                        <div align="left">
+                            <font color="#000033">
+                                <strong>
+                                    <font size="2" face="Arial, Helvetica, sans-serif">
                                         <input name="nationality" readonly type="text" size="6" value="Indian">
-                                        &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;
-                                        &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</font></strong></font></div>
+                                    </font>
+                                </strong>
+                            </font>
+                        </div>
                     </td>
                     <td class="tablecontent1">
-                        <div align="left"><font color="#000033" size="2" face="Arial, Helvetica, sans-serif"><strong>Gender<font
-                                        color="#FF0000">*</font>:</strong></font> <strong><font color="#FFFF00" size="5"
-                                                                                                face="Monotype Corsiva"><em><font
-                                            color="#3399CC">
-                                            <select class="listMenu" name="sex" id="sex">
-                                                <?php
-                                                $sqlstr = "select * from sex";
-                                                $rec = executeSqlQuery($sqlstr);
-                                                echo "<option value=\"0\">--Select Sex--</>";
-                                                while ($row = mysql_fetch_array($rec)) {
-                                                    echo "<option value=" . $row["Gender"] . ">" . $row["Gender"] . "</>";
-
-                                                }
-                                                ?>
-                                            </select>
-                                        </font></font></strong></div>
+                        <div align="left">
+                            <font color="#000033" size="2" face="Arial, Helvetica, sans-serif">
+                                <strong>Gender <font color="#FF0000">*</font>:</strong>
+                            </font>
+                            <strong>
+                                <em>
+                                    <font color="#3399CC">
+                                        <select class="listMenu" name="sex" id="sex">
+                                            <?php
+                                            $sqlstr = "select * from sex";
+                                            $rec = executeSqlQuery($sqlstr);
+                                            echo "<option value=\"0\">--Select Sex--</option>";
+                                            while ($row = mysql_fetch_array($rec)) {
+                                                echo "<option value=" . $row["Gender"] . ">" . $row["Gender"] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </font>
+                            </strong>
+                        </div>
                     </td>
                     <td class="tablecontent1" colspan="2"></td>
                 </tr>
@@ -375,14 +366,12 @@ function application_Register()
                     <td width="154" align="left" class="tablecontent1">
                         <div align="left"><font size="2" face="Arial, Helvetica, sans-serif"><strong><font
                                         color="#000033">
-                                        <select class="category" name="category" id="category"
-                                                onChange="getYearList();">
+                                        <select class="category" name="category" id="category">
                                             <option value="UR" selected="selected">UR</option>
                                             <option value="ST">ST</option>
                                             <option value="SC">SC</option>
                                             <option value="OBC-A">OBC-A</option>
                                             <option value="OBC-B">OBC-B</option>
-
                                         </select></font></strong></font></div>
                     </td>
                     <td width="184" class="tablecontent1">
@@ -443,6 +432,7 @@ function application_Register()
                                         </select> <select class="listMenu" size="1" name="seldobyear" id="seldobyear"
                                                           onChange="setAge()">
                                             <option value="00" selected="selected">Year</option>
+                                            <option value="1997">1997</option>
                                             <option value="1996">1996</option>
                                             <option value="1995">1995</option>
                                             <option value="1994">1994</option>
@@ -466,14 +456,16 @@ function application_Register()
                                             <option value="1976">1976</option>
                                             <option value="1975">1975</option>
                                             <option value="1974">1974</option>
-
-
+                                            <option value="1973">1973</option>
+                                            <option value="1972">1972</option>
+                                            <option value="1971">1971</option>
+                                            <option value="1970">1970</option>
                                         </select></font></strong></font></div>
                     </td>
                     <td colspan="2" class="tablecontent1"><font size="2"
                                                                 face="Arial, Helvetica, sans-serif"><strong><font
                                     color="#000033">Age
-                                    as on (1st January, 2014)<font color="#FF0000">*</font>:</font></strong></font>
+                                    as on (1st January, 2015)<font color="#FF0000">*</font>:</font></strong></font>
                         <input value="" readonly="readOnly" size="3" name="txtage" id="txtage"></td>
                 </tr>
                 <tr>
@@ -687,17 +679,18 @@ function application_Register()
                     </td>
                 </tr>
                 <tr>
-                    <td class="tablecontent1" height="24" colspan="5"><font color="#000033" size="2"
+                    <td class="tablecontent1" height="24" colspan="6"><font color="#000033" size="2"
                                                                             face="Arial, Helvetica, sans-serif"><strong>Whether
                                 Present Address same as Permanent Address &nbsp;&nbsp; &nbsp;
                                 <input name="checkbox1" type="checkbox" id="checkbox1" onClick="updateaddress()">
-                            </strong></font></td>
-                    <td class="tablecontent1" height="24"></td>
+                            </strong></font>
+                    </td>
                 </tr>
                 <tr>
-                    <td height="2" class="tablecontent1" colspan="3"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Educational
-                                Qualification :</strong></font></td>
-                    <td height="2" class="tablecontent1" colspan="3">
+                    <td height="2" class="tablecontent1" colspan="6"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Educational
+                                Qualification :</strong></font>
+                    </td>
+
                 </tr>
                 <tr>
                     <td height="163" colspan="6"><font color="#000033"><strong><font size="2"
@@ -705,8 +698,6 @@ function application_Register()
                                 </font> </strong> </font>
                         <table id="education" width="100%" height="118" border="1" cellpadding="0" cellspacing="0"
                                bordercolor="#000000">
-                            <tr>
-                                <td width="11%" height="10">
                             <tr bgcolor="#CCFFFF">
                                 <td class="tablecontent1">
                                     <div align="center"><font color="#0000CC"><strong><font size="2"
@@ -773,37 +764,37 @@ function application_Register()
                                 </td>
                                 <td>
                                     <div align="center">
-                                        <input name="ed011" type="text" id="ed011" value="" size="40">
+                                        <input name="ed011" type="text" id="ed011">
                                     </div>
                                 </td>
                                 <td>
                                     <div align="center">
-                                        <input name="ed021" type="text" id="ed021" value="" size="10">
+                                        <input name="ed021" type="text" id="ed021">
                                     </div>
                                 </td>
                                 <td>
                                     <div align="center">
-                                        <input name="ed031" type="text" id="ed031" value="" size="50">
+                                        <input name="ed031" type="text" id="ed031">
                                     </div>
                                 </td>
                                 <td>
                                     <div align="center">
-                                        <input name="ed041" type="text" id="ed041" value="" size="8">
+                                        <input name="ed041" type="text" id="ed041">
                                     </div>
                                 </td>
                                 <td>
                                     <div align="center">
-                                        <input name="ed051" type="text" id="ed051" value="" size="8">
+                                        <input name="ed051" type="text" id="ed051">
                                     </div>
                                 </td>
                                 <td>
                                     <div align="center">
-                                        <input name="ed061" type="text" id="ed061" value="" size="8">
+                                        <input name="ed061" type="text" id="ed061">
                                     </div>
                                 </td>
                                 <td width="12%" colspan="3">
                                     <div align="center">
-                                        <input name="ed071" type="text" id="ed071" value="" size="8">
+                                        <input name="ed071" type="text" id="ed071">
                                     </div>
                                 </td>
                             </tr>
@@ -822,10 +813,12 @@ function application_Register()
                     <td height="205" colspan="6">
                         <table width="100%" border="0" cellpadding="0" cellspacing="0" bordercolor="#000000">
                             <tr>
-                                <td width="10%" class="tablecontent1"><font size="2"
-                                                                            face="Arial, Helvetica, sans-serif"><strong>Experience
-                                            (If
-                                            Any):-</strong></font></td>
+                                <td width="10%" class="tablecontent1">
+                                    <font size="2"
+                                          face="Arial, Helvetica, sans-serif">
+                                        <strong>Experience (If Any):-</strong>
+                                    </font>
+                                </td>
                                 <td class="tablecontent1" height="60" colspan="4">&nbsp;</td>
                             </tr>
                             <tr>
@@ -834,20 +827,18 @@ function application_Register()
                                             </font> </strong> </font>
                                     <table id="experience" width="100%" height="118" border="1" cellpadding="0"
                                            cellspacing="0" bordercolor="#000000">
-                                        <tr>
-                                            <td width="18%" height="10">
                                         <tr bgcolor="#CCFFFF">
                                             <td class="tablecontent1">
                                                 <div align="center"><strong><font color="#0000CC" size="2"
                                                                                   face="Arial, Helvetica, sans-serif">Name
                                                             of Project</font></strong></div>
                                             </td>
-                                            <td width="18%" class="tablecontent1">
+                                            <td class="tablecontent1">
                                                 <div align="center"><strong><font color="#0000CC" size="2"
                                                                                   face="Arial, Helvetica, sans-serif">Project
                                                             Activities</font></strong></div>
                                             </td>
-                                            <td width="14%" class="tablecontent1">
+                                            <td class="tablecontent1">
                                                 <div align="center">
                                                     <p><strong><font color="#0000CC" size="2"
                                                                      face="Arial, Helvetica, sans-serif">Name of Post in
@@ -864,14 +855,14 @@ function application_Register()
                                                                 Conducting the project</font></strong></p>
                                                 </div>
                                             </td>
-                                            <td width="10%" align="center" valign="middle" class="tablecontent1">
+                                            <td align="center" valign="middle" class="tablecontent1">
                                                 <div align="center">
                                                     <p><strong><font color="#0000CC" size="2"
                                                                      face="Arial, Helvetica, sans-serif">From
                                                                 (dd/mm/yyyy)</font></strong></p>
                                                 </div>
                                             </td>
-                                            <td width="9%" class="tablecontent1">
+                                            <td class="tablecontent1">
                                                 <div align="center">
                                                     <p><font color="#0000CC"><strong><font size="2"
                                                                                            face="Arial, Helvetica, sans-serif">To </font></strong></font><strong><font
@@ -887,49 +878,49 @@ function application_Register()
                                                                 work in month</font></strong></p>
                                                 </div>
                                             </td>
-                                            <td width="11%" colspan="2" class="tablecontent1">
+                                            <td colspan="2" class="tablecontent1">
                                                 <div align="center"><strong><font color="#0000CC" size="2"
                                                                                   face="Arial, Helvetica, sans-serif">Remarks</font></strong>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td height="48" bgcolor="#FFFFFF">
+                                            <td bgcolor="#FFFFFF">
                                                 <div align="center">
-                                                    <input name="exp001" type="text" id="exp001" value="" size="40">
+                                                    <input name="exp001" type="text" id="exp001">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div align="center">
-                                                    <input name="exp011" type="text" id="exp011" value="" size="40">
+                                                    <input name="exp011" type="text" id="exp011">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div align="center">
-                                                    <input name="exp021" type="text" id="exp021" value="" size="30">
+                                                    <input name="exp021" type="text" id="exp021">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div align="center">
-                                                    <input name="exp031" type="text" id="exp031" value="" size="30">
+                                                    <input name="exp031" type="text" id="exp031">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div align="center">
-                                                    <input name="exp041" type="text" id="exp041" size="15">
+                                                    <input name="exp041" type="text" id="exp041">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div align="center">
-                                                    <input name="exp051" type="text" id="exp051" value="" size="15">
+                                                    <input name="exp051" type="text" id="exp051">
                                                 </div>
                                             </td>
                                             <td colspan="2">
                                                 <div align="center">
-                                                    <input name="exp061" type="text" id="exp061" value="" size="15">
+                                                    <input name="exp061" type="text" id="exp061">
                                                 </div>
                                             </td>
-                                            <td width="11%" colspan="2">
+                                            <td colspan="2">
                                                 <div align="center">
                                                     <input name="exp071" type="text" id="exp071" value="" size="25">
                                                 </div>
@@ -970,14 +961,12 @@ function application_Register()
                                 </td>
                             </tr>
 
-                            <tr style="display:none" id="compExp">
-                                <td height="127" colspan="5"><font color="#000033"><strong><font size="2"
-                                                                                                 face="Arial, Helvetica, sans-serif">
+                            <tr id="compExp">
+                                <td colspan="6"><font color="#000033"><strong><font size="2"
+                                                                                    face="Arial, Helvetica, sans-serif">
                                             </font> </strong> </font>
                                     <table id="expComputer" width="100%" height="34" border="1" cellpadding="0"
                                            cellspacing="0" bordercolor="#000000">
-                                        <tr width="100%" height="15">
-                                            <td width="20%" height="10">
                                         <tr bgcolor="#CCFFFF">
                                             <td class="tablecontent1">
                                                 <div align="center"><strong><font color="#0000CC" size="2"
@@ -1047,21 +1036,26 @@ function application_Register()
                                                 * You can add Maximum 2 rows)</font></strong>
                                         <input type="button" class="button" name="button2" id="button2"
                                                value="Delete Row" onClick="deleteRowFromComp();">
-                                    </p></td>
+                                    </p>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="tablecontent2"><font size="2" face="Arial, Helvetica, sans-serif"><strong>PIN<font
                                                 color="#FF0000">*</font>:-</strong></font></td>
-                                <td class="tablecontent2" height="60" colspan="4"><input name="pin" id="pin"
+                                <td class="tablecontent2" height="60" colspan="5"><input name="pin" id="pin"
                                                                                          type="password" size="4"
                                                                                          maxlength="4" value="">
-                                    <strong><font color="#FF0000" size="1">(Please Specify 4 digit
+                                    <strong><font color="#FF0000" size="1">(Please Create 4 digit
                                             PIN number for uploading Photograph &amp; Signature)</font></strong></td>
                             </tr>
                             <tr>
-                                <td height="90" colspan="5" class="tablecontent2">
-                                    <div align="justify"><font color="#000033"><strong><font size="2">I
-                                                    hereby declare that I fulfil the eligibility criteria for the
+                                <td height="90" colspan="6" class="tablecontent2">
+                                    <div align="justify">
+                                        <font color="#000033" size="2">
+                                            <strong>
+                                                <label for="accp_decl">
+                                                    <input name="accp_decl" type="checkbox" id="accp_decl">
+                                                    I hereby declare that I fulfil the eligibility criteria for the
                                                     post in terms of educational qualifications (including percentage
                                                     of marks obtained in the examination and certificate course),
                                                     experience, age, etc. and I am aware that mere calling for Test
@@ -1075,8 +1069,10 @@ function application_Register()
                                                     if at any time I am found to have concealed/distorted any material
                                                     information my candidature/appointment is liable to summary
                                                     termination without notice or compensation.
-                                                    <input name="accp_decl" type="checkbox" id="accp_decl">
-                                                </font></strong></font></div>
+                                                </label>
+                                            </strong>
+                                        </font>
+                                    </div>
                                 </td>
                             </tr>
                         </table>
@@ -1084,34 +1080,26 @@ function application_Register()
                 </tr>
                 <tr>
                     <td height="28" colspan="6" align="right">
-                        <div align="center"><strong><font color="#000033" size="2" face="Arial, Helvetica, sans-serif">
+                        <div align="center">
+                            <strong>
+                                <font color="#000033" size="2" face="Arial, Helvetica, sans-serif">
                                     <input type="button" name="Submit" value="Save" Onclick="validate();"
                                            class="button">
                                     <input name="myear" id="myear" value="1969" type="hidden">
                                     <input name="Exit" type="button" id="Exit" value="Exit" class="button"
                                            onClick="window.close();">
-                                </font></strong></div>
-                        <div align="center"><strong><font color="#000033" size="2" face="Arial, Helvetica, sans-serif">
-                                </font></strong></div>
+                                </font>
+                            </strong>
+                        </div>
                     </td>
-                </tr>
-                <tr>
-                    <td width="144"></td>
-                    <td height="2" colspan="2">
                 </tr>
             </table>
         </div>
-        <table width="100%">
-            <tr>
-                <td class="tablecontent1" height="24">
-                    <div align="center"><span class="link1"><font color="#00a2cf">
-                                Design and Develped by National Informatics Centre Purba Medinipur West Bengal and
-                                Content Provided By District Administration Purba Medinipur
-                            </font></span>
-                    </div>
-                </td>
-            </tr>
-        </table>
+        <div align="center" class="tablecontent1"><span class="link1"><font color="#00a2cf">
+                    Designed and Developed by National Informatics Centre Purba Medinipur West Bengal and
+                    Content Provided By District Administration <?php echo DISTRICT; ?>
+                </font></span>
+        </div>
     </form>
     </body>
     </html>
@@ -1249,7 +1237,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (sdid == "") {
             document.getElementById("block").innerHTML = "";
-            return;
+
         } else {
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -1262,7 +1250,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     document.getElementById("block").innerHTML = xmlhttp.responseText;
                 }
-            }
+            };
             xmlhttp.open("GET", "getblock.php?sdid=" + sdid, true);
             xmlhttp.send();
         }
@@ -1307,7 +1295,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         }
                     }
                 }
-            }
+            };
             xmlhttp.open("GET", "addRowOnQuali.php?rowNo=" + (lastRow - 2), true);
             xmlhttp.send();
         }
@@ -1356,7 +1344,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         }
                     }
                 }
-            }
+            };
             xmlhttp.open("GET", "addRowOnExp.php?rowNo=" + (lastRow - 2), true);
             xmlhttp.send();
         }
@@ -1405,7 +1393,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         }
                     }
                 }
-            }
+            };
             xmlhttp.open("GET", "addRowOnExpComputer.php?rowNo=" + (lastRow - 2), true);
             xmlhttp.send();
         }
@@ -1465,7 +1453,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (str.length == 0) {
             document.getElementById("txtHint").innerHTML = "";
-            return;
+
         } else {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function () {
@@ -1473,7 +1461,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     document.getElementById("seldobyear").innerHTML = xmlhttp.responseText;
                     //select.appendChild(xmlhttp.responseText);
                 }
-            }
+            };
             xmlhttp.open("GET", "getYearList.php?q=" + str, true);
             xmlhttp.send();
         }

@@ -1,6 +1,6 @@
 <?php
-
 include("connection.php");
+include('settings.inc.php');
 if (isset($_GET["appid"]) && isset($_GET["pin"])) {
     $appid = trim($_GET["appid"]);
     $pin = trim($_GET["pin"]);
@@ -45,7 +45,15 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <td align="left">
-                                    <div align="center"><img src="image/banner.gif" width="680" height="80">
+                                    <div align="left">
+                                        <img class="logo" src="image/Emblem_of_India.png" width="60">
+
+                                        <div class="site-head">
+                                            <h2>Government of West Bengal</h2>
+                                            <strong>Office of the District Magistrate</strong><br/>
+                                            <span><?php echo ORG; ?></span><br/>
+                                            <span><?php echo DISTRICT; ?></span>
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -57,32 +65,16 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                     <td class="belowheader" height="10"></td>
                 </tr>
                 <tr>
-                    <td height="300" valign="top">
-                        <table align="center" border="0" cellpadding="0" cellspacing="0" width="445">
-                            <tbody>
-                            <tr>
-                                <td colspan="4" class="alert" align="center" height="15" valign="middle"></td>
-                            </tr>
-                            <tr>
-                                <td bgcolor="#083B8C" width="9"><img src="image/h_curve.gif" height="27" width="9"></td>
-                                <td class="header" bgcolor="#e9fafe" width="165"> Acknowledgement
-                                    Receipt
-                                </td>
-                                <td width="33"><img src="image/h_cut.gif" height="27" width="28"></td>
-                                <td class="header" align="right" width="238"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" bgcolor="#083B8C" height="1"></td>
-                            </tr>
-
-                            </tbody>
-                        </table>
+                    <td valign="top">
+                        <div class="header">
+                            Acknowledgement Receipt
+                        </div>
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tbody>
                             <tr>
                                 <td>
                                     <form id="login_frm" name="login_frm" method="post" action="print.php">
-                                        <table align="center" border="0" cellpadding="2" cellspacing="2" width="445">
+                                        <table align="center" border="0" cellpadding="2" cellspacing="2">
                                             <tbody>
                                             <tr>
                                                 <td align="left" valign="top" class="tablecontent1">
@@ -122,7 +114,7 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                                             <tr>
                                                 <td class="tablecontent1" align="center" valign="top"><a
                                                         class="linkfooter" href="#"
-                                                        onClick="javascript:mypopup('note1.php','800','700')">Steps
+                                                        onClick="mypopup('note1.php','800','700')">Steps
                                                         to enable JavaScript in Internet Explorer versions
                                                         (8.0,9.0),Mozilla Firefox30.0, Google Chrome44.0</a></td>
                                             </tr>
@@ -134,12 +126,10 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                         </table>
                     </td>
                 </tr>
-
-
-                </tbody></table>
+                </tbody>
+            </table>
         </td>
     </tr>
 </table>
-
 </body>
 </html>

@@ -45,14 +45,14 @@ function jsfCheckDateLength(date) {
 
 //date validations added by kishore
 function jsfGetLongDate(dd, mm, yy) {
-    dd = dd.toString()
-    mm = mm.toString()
-    yy = yy.toString()
+    dd = dd.toString();
+    mm = mm.toString();
+    yy = yy.toString();
     return parseInt(yy + mm + dd)
 }
 
 function jsfGetFormDate(date) {
-    var re = /^(0?\d{1,2})[\/-]0?\d{1,2}[\/-]\d{4}/g
+    var re = /^(0?\d{1,2})[\/-]0?\d{1,2}[\/-]\d{4}/g;
     var arr = re.exec(date);
     var ret = false;
     for (i in arr) {
@@ -63,7 +63,7 @@ function jsfGetFormDate(date) {
 }
 
 function jsfGetFormMonth(date) {
-    var re = /^0?\d{1,2}[\/-](0?\d{1,2})[\/-]\d{4}/g
+    var re = /^0?\d{1,2}[\/-](0?\d{1,2})[\/-]\d{4}/g;
     var arr = re.exec(date);
     var ret = false;
     for (i in arr) {
@@ -73,7 +73,7 @@ function jsfGetFormMonth(date) {
     return 0;
 }
 function jsfGetFormYear(date) {
-    var re = /^0?\d{1,2}[\/-]0?\d{1,2}[\/-](\d{4})/g
+    var re = /^0?\d{1,2}[\/-]0?\d{1,2}[\/-](\d{4})/g;
     var arr = re.exec(date);
     var ret = false;
     for (i in arr) {
@@ -124,7 +124,7 @@ function daysInFebruary(year) {
 }
 function DaysArray(n) {
     for (var i = 1; i <= n; i++) {
-        this[i] = 31
+        this[i] = 31;
         if (i == 4 || i == 6 || i == 9 || i == 11) {
             this[i] = 30
         }
@@ -148,22 +148,22 @@ function chkWindow4() {
 
 function isDatechk(dtStr) {
 
-    var daysInMonth = DaysArray(12)
-    var pos1 = dtStr.indexOf(dtCh)
-    var pos2 = dtStr.indexOf(dtCh, pos1 + 1)
-    var strMonth = dtStr.substring(0, pos1)
-    var strDay = dtStr.substring(pos1 + 1, pos2)
-    var strYear = dtStr.substring(pos2 + 1)
-    strYr = strYear
+    var daysInMonth = DaysArray(12);
+    var pos1 = dtStr.indexOf(dtCh);
+    var pos2 = dtStr.indexOf(dtCh, pos1 + 1);
+    var strMonth = dtStr.substring(0, pos1);
+    var strDay = dtStr.substring(pos1 + 1, pos2);
+    var strYear = dtStr.substring(pos2 + 1);
+    strYr = strYear;
 
-    if (strDay.charAt(0) == "0" && strDay.length > 1) strDay = strDay.substring(1)
-    if (strMonth.charAt(0) == "0" && strMonth.length > 1) strMonth = strMonth.substring(1)
+    if (strDay.charAt(0) == "0" && strDay.length > 1) strDay = strDay.substring(1);
+    if (strMonth.charAt(0) == "0" && strMonth.length > 1) strMonth = strMonth.substring(1);
     for (var i = 1; i <= 3; i++) {
         if (strYr.charAt(0) == "0" && strYr.length > 1) strYr = strYr.substring(1)
     }
-    month = parseInt(strMonth)
-    day = parseInt(strDay)
-    year = parseInt(strYr)
+    month = parseInt(strMonth);
+    day = parseInt(strDay);
+    year = parseInt(strYr);
     if (pos1 == -1 || pos2 == -1) {
         return false;
     }
@@ -190,22 +190,22 @@ function isDatechk(dtStr) {
 
 function isDate(dtStr) {
 
-    var daysInMonth = DaysArray(12)
-    var pos1 = dtStr.indexOf(dtCh)
-    var pos2 = dtStr.indexOf(dtCh, pos1 + 1)
-    var strMonth = dtStr.substring(0, pos1)
-    var strDay = dtStr.substring(pos1 + 1, pos2)
-    var strYear = dtStr.substring(pos2 + 1)
-    strYr = strYear
+    var daysInMonth = DaysArray(12);
+    var pos1 = dtStr.indexOf(dtCh);
+    var pos2 = dtStr.indexOf(dtCh, pos1 + 1);
+    var strMonth = dtStr.substring(0, pos1);
+    var strDay = dtStr.substring(pos1 + 1, pos2);
+    var strYear = dtStr.substring(pos2 + 1);
+    strYr = strYear;
 
-    if (strDay.charAt(0) == "0" && strDay.length > 1) strDay = strDay.substring(1)
-    if (strMonth.charAt(0) == "0" && strMonth.length > 1) strMonth = strMonth.substring(1)
+    if (strDay.charAt(0) == "0" && strDay.length > 1) strDay = strDay.substring(1);
+    if (strMonth.charAt(0) == "0" && strMonth.length > 1) strMonth = strMonth.substring(1);
     for (var i = 1; i <= 3; i++) {
         if (strYr.charAt(0) == "0" && strYr.length > 1) strYr = strYr.substring(1)
     }
-    month = parseInt(strMonth)
-    day = parseInt(strDay)
-    year = parseInt(strYr)
+    month = parseInt(strMonth);
+    day = parseInt(strDay);
+    year = parseInt(strYr);
     if (pos1 == -1 || pos2 == -1) {
         alert("The date format should be : dd/mm/yyyy");
         document.getElementById('txtage').value = "";
@@ -759,7 +759,7 @@ function getAge(varAsOfDate, varBirthDate) {
             dtAsOfDate.getUTCSeconds() * 1000    ) -
             ( dtBirth.getUTCHours() * 3600000 +
             dtBirth.getUTCMinutes() * 60000 +
-            dtBirth.getUTCSeconds() * 1000       )
+            dtBirth.getUTCSeconds() * 1000       );
 
 
         if (dtAsOfDate.getUTCDate() > dtBirth.getUTCDate() ||
@@ -866,7 +866,7 @@ function getAge(varAsOfDate, varBirthDate) {
             strHowOld = '';
     }
     else
-        strHowOld = 'Not Born Yet'
+        strHowOld = 'Not Born Yet';
     // return string representation
     return strHowOld
 }
@@ -1891,7 +1891,6 @@ function chkDepositDate() {
 
     if ((chckStartdate > todaysdate)) {
         alert("Deposit Date should not be greater than today's date");
-        ;
         document.getElementById("seldepday").focus();
         return false;
     }
@@ -2549,7 +2548,7 @@ function chkresult(v, c) {
  */
 
 function checkbox_value(fldname) {
-    var a = new Array();
+    var a = [];
     a = document.getElementsByName(fldname);
     var p = 0;
     var lang1_str = "";
@@ -4156,7 +4155,7 @@ function validate(submit_type, step_no) {
         }
         // checking the length of both phone and std
         var firstval_txtphone = parseInt(document.getElementById('txtphone').value.length);
-        var secondval_txtstd = parseInt(document.getElementById('txtstd').value.length)
+        var secondval_txtstd = parseInt(document.getElementById('txtstd').value.length);
         var stdphone_max_length = firstval_txtphone + secondval_txtstd;
         /*if(stdphone_max_length != 16)
          {
@@ -7737,7 +7736,7 @@ function Chk_Float(obj) {
         var wrongchar = false;
         var DecimalFound = false;
         for (var i = 0; i < val.length; i++) {
-            var ch = val.charAt(i)
+            var ch = val.charAt(i);
             if (i == 0 && ch == "-") {
                 continue;
             }
@@ -7754,7 +7753,7 @@ function Chk_Float(obj) {
                 if (obj.value == 0)
                     obj.value = 0.00;
                 else
-                    obj.value = val + '.00'
+                    obj.value = val + '.00';
                 if (val > 100) {
 //					alert(val.substr(0,2) +"--"+ val.substr(2,6));
                     obj.value = val.substr(0, 2) + "." + val.substr(2, 6);
@@ -7838,7 +7837,7 @@ function hidediv(obj) {
 
 function getBrowserVersion() {
     if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
-        var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number
+        var ieversion = Number(RegExp.$1); // capture x.x portion and store as a number
         if (ieversion >= 8)
             return 'IE8';
         else if (ieversion >= 7)
@@ -7934,7 +7933,7 @@ function numberctrl(e) {
     var key;
     var keychar;
     var isCtrl;
-    var forbiddenKeys = new Array('a', 'n', 'c', 'x', 'v', 'j');
+    var forbiddenKeys = ['a', 'n', 'c', 'x', 'v', 'j'];
     if (window.event) {
         key = window.event.keyCode;
         if (window.event.ctrlKey)
@@ -7976,7 +7975,7 @@ function emailctrl(e) {
     var key;
     var keychar;
     var isCtrl;
-    var forbiddenKeys = new Array('a', 'n', 'c', 'x', 'v', 'j');
+    var forbiddenKeys = ['a', 'n', 'c', 'x', 'v', 'j'];
     if (window.event) {
         key = window.event.keyCode;
         if (window.event.ctrlKey)
@@ -8012,7 +8011,7 @@ function alphanumberctrl(e) {
     var key;
     var keychar;
     var isCtrl;
-    var forbiddenKeys = new Array('a', 'n', 'c', 'x', 'v', 'j');
+    var forbiddenKeys = ['a', 'n', 'c', 'x', 'v', 'j'];
     if (window.event) {
         key = window.event.keyCode;
         if (window.event.ctrlKey)
@@ -8069,7 +8068,7 @@ function alphactrl(e) {
     var key;
     var keychar;
     var isCtrl;
-    var forbiddenKeys = new Array('a', 'n', 'c', 'x', 'v', 'j');
+    var forbiddenKeys = ['a', 'n', 'c', 'x', 'v', 'j'];
     if (window.event) {
         key = window.event.keyCode;
         if (window.event.ctrlKey)
@@ -8243,7 +8242,6 @@ function chkDischargeDate(chkday, chkmon, chkyear) {
 
     if ((chckDischargeDate > todaysdate)) {
         alert("Date of Discharge should not be greater than today's date");
-        ;
         document.getElementById(chkday).focus();
         return false;
     }
@@ -8274,7 +8272,6 @@ function chkjoinDate(chkday, chkmon, chkyear) {
 
     if ((chckjoinDate > todaysdate)) {
         alert("Date of Joining should not be greater than today's date");
-        ;
         document.getElementById(chkday).focus();
         return false;
     }
@@ -8316,7 +8313,6 @@ function chkactsubwefDate(chkday, chkmon, chkyear) {
 
     if ((varchckactsubwefDate > todaysdate)) {
         alert("Date of Acting w.e.f or Acting Substantive w.e.f should not be greater than today's date");
-        ;
         document.getElementById(chkday).focus();
         return false;
     }
@@ -9445,7 +9441,7 @@ function chk_old_new_values() {
     fields_changed_name = "";
     fields_changed = "no";
 
-    var quote = new Array();
+    var quote = [];
     var k = 0;
 
 // THIS CODE IS FOR Deena BANK 
@@ -10225,7 +10221,7 @@ function funcadd(k) {
     return parseInt(k) + 1;
 }
 function checkbox_value_str(fldname) {
-    var a = new Array();
+    var a = [];
     var chk_box_str = '';
     a = document.getElementsByName(fldname);
     for (i = 0; i < a.length; i++) {
@@ -11934,12 +11930,12 @@ function validateFormFrame() {
     if (typePhoto == 'photo') {
         if (!isphotouploaded) {
             if (resValuePhoto != 'true') {
-                alert('Please upload your Photo')
+                alert('Please upload your Photo');
                 return false;
             }
         }
     }
-    responseSig = checkSigStatus()
+    responseSig = checkSigStatus();
 
     var resSig = responseSig.split(":");
     typeSig = resSig[1].toString();
@@ -11948,7 +11944,7 @@ function validateFormFrame() {
     if (typeSig == 'sig') {
         if (!issignatureuploaded) {
             if (resValueSig != 'true') {
-                alert('Please upload your Signature')
+                alert('Please upload your Signature');
                 return false;
             }
         }
@@ -12569,7 +12565,7 @@ function filevalidate(fileobj, imgtype) {
     }
     var node = fileobj;
     var nodeval = fileobj.value;
-    var extArray = new Array(".jpg", ".jpeg");
+    var extArray = [".jpg", ".jpeg"];
     var allowSubmit = false;
 //alert(nodeval);
 //alert(node);

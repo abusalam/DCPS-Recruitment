@@ -29,7 +29,7 @@ function createCalender(year, month, day) {
     var curDate = new Date();
     var curDay = curDate.getDate();
     var curMonth = curDate.getMonth();
-    var curYear = getRealYear(curDate)
+    var curYear = getRealYear(curDate);
 
     // if a date already exists, we calculate some values here
     if (!year) {
@@ -59,7 +59,7 @@ function createCalender(year, month, day) {
     firstRow = true;
     var x = 0;
     var d = 0;
-    var trs = []
+    var trs = [];
     var ti = 0;
     while (d <= getDaysPerMonth(month, year)) {
         if (firstRow) {

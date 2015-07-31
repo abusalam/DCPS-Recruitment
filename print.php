@@ -1,5 +1,6 @@
 <?php
 include("connection.php");
+include('settings.inc.php');
 if (isset($_GET["appid"]) && isset($_GET["pin"])) {
     $appid = trim($_GET["appid"]);
     $pin = trim($_GET["pin"]);
@@ -51,11 +52,18 @@ a.perm_dist,a.perm_pin,a.perm_state,a.email,a.pin,a.compknowledge,a.photo from a
 <body>
 <form id="form">
     <center>
-
         <table width="99%" height="921" border="1" cellpadding="4" cellspacing="0" style="border-color:Black;">
             <tr>
-                <td width="53%" height="80" align="left">
-                    <div align="center"><img src="image/banner.gif" width="90%" height="80">
+                <td>
+                    <div style="text-align: center;">
+                        <img class="logo" src="image/Emblem_of_India.png" width="60">
+
+                        <div class="site-head">
+                            <h2>Government of West Bengal</h2>
+                            <strong>Office of the District Magistrate</strong><br/>
+                            <span><?php echo ORG; ?></span><br/>
+                            <span><?php echo DISTRICT; ?></span>
+                        </div>
                     </div>
                 </td>
             </tr>
@@ -64,7 +72,7 @@ a.perm_dist,a.perm_pin,a.perm_state,a.email,a.pin,a.compknowledge,a.photo from a
                     <div align="center">&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; Email- daf.purbamedinpur@gmail.com
+                        &nbsp; &nbsp; Email:- <?php echo EMAIL; ?>
                         <input name="Print" onClick="window.print()" type="button" value="Print"/>
                     </div>
                 </td>

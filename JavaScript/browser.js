@@ -3,7 +3,7 @@ document.oncontextmenu = function () {
     return false;
 };
 document.onkeydown = doKeyDown;
-keys = new Array();
+keys = [];
 keys.f112 = "f1";
 keys.f113 = "f2";
 keys.f114 = "f3";
@@ -367,8 +367,7 @@ function ltrim(c, d) {
 function rtrim(c, d) {
     d = d || "\\s";
     return c.replace(new RegExp("[" + d + "]+$", "g"), "")
-};
-
+}
 function captureTab(h) {
     var g = (navigator.appName == "Netscape") ? 1 : 0;
     h = (g) ? h : window.event;
