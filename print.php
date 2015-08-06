@@ -10,9 +10,12 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
     $filename2 = $filename . "_" . "1" . ".jpg";
     $filename3 = $filename . "_" . "2" . ".jpg";
 
-    $sqlstr = "SELECT a.appid,p.PostName as post,a.blockapp, sd.subdiv as subapp,a.aname,a.nationality,a.category,a.father,a.dob,a.sex,a.age_yr,a.mobile,a.pre_address,
-a.pre_block,a.pre_subdiv,a.pre_dist,a.pre_pin,a.pre_state,a.perm_address,a.perm_block,a.perm_subdiv,
-a.perm_dist,a.perm_pin,a.perm_state,a.email,a.pin,a.compknowledge,a.photo from applicant as a,subdivision as sd,post as p where a.appid = '" . $appid . "' and md5(md5(`pin`)+111111)='" . $pin . "' and a.subapp=sd.sdiv_cd and a.post=p.PostCode  ";
+    $sqlstr = "SELECT a.appid,p.PostName as post,a.blockapp, sd.subdiv as subapp,a.aname,a.nationality,a.category,"
+        . "a.father,a.dob,a.sex,a.age_yr,a.mobile,a.pre_address,a.pre_block,a.pre_subdiv,a.pre_dist,a.pre_pin,"
+        . "a.pre_state,a.perm_address,a.perm_block,a.perm_subdiv,a.perm_dist,a.perm_pin,a.perm_state,a.email,a.pin,"
+        . "a.compknowledge,a.photo from applicant as a,subdivision as sd,post as p "
+        . "where a.appid = '" . $appid . "' and md5(md5(`pin`)+111111)='" . $pin . "'"
+        . " and a.post=p.PostCode "; // and a.subapp=sd.sdiv_cd
     $result = executeSqlQuery($sqlstr);
     if ($row = mysql_fetch_array($result)) {
 
