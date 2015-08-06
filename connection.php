@@ -1,11 +1,8 @@
 <?php
-/**
- * @author
- * @copyright 2010
- */
+include('settings.inc.php');
 function connect()
 {
-    $con = mysql_connect("localhost", "", "");
+    $con = mysql_connect(HOST_Name, MySQL_User, MySQL_Pass);
     if (!$con) {
         die('Could not connect DataBase: ' . mysql_error());
     }
@@ -15,7 +12,7 @@ function connect()
 function executeSqlQuery($sqlstr)
 {
     $con = connect();
-    $db_selected = mysql_select_db("health", $con);
+    $db_selected = mysql_select_db(MySQL_DB, $con);
     $row = mysql_query($sqlstr);
     disconnect($con);
     return $row;
