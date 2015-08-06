@@ -6,7 +6,7 @@ function application_Register()
     ?>
     <html>
     <head>
-        <title>Application Registration Form</title>
+        <title>Application Form - <?php echo OFFICE; ?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
         <script language="javascript" type="text/javascript" src="JavaScript/reg_valid.js"></script>

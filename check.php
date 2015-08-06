@@ -52,7 +52,7 @@ if ($LogC > 5) {
 }
 ?>
 <html>
-<head><title></title>
+<head><title>Check - <?php echo OFFICE; ?></title>
 </head>
 <body>
 <?php

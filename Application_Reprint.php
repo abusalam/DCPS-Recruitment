@@ -7,7 +7,7 @@ function DisplayDefaultForm()
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to DCPU Online Portal-Application Reprint</title>
+        <title>Application Reprint - <?php echo OFFICE; ?></title>
         <link href="CSS/inb.css" rel="stylesheet" type="text/css">
     </head>
     <body topmargin="0" oncontextmenu="return false;" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">

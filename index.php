@@ -11,7 +11,7 @@ include('settings.inc.php');
 </script>
 <html>
 <head>
-    <title>Welcome to District Child Protection Society Online Recruitment Portal</title>
+    <title>Welcome to <?php echo OFFICE; ?> Online Recruitment Portal</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link href="CSS/inb.css" rel="stylesheet" type="text/css">
 </head>
