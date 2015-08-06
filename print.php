@@ -10,7 +10,7 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
     $filename2 = $filename . "_" . "1" . ".jpg";
     $filename3 = $filename . "_" . "2" . ".jpg";
 
-    $sqlstr = "SELECT a.appid,p.PostName as post,a.blockapp, sd.subdiv as subapp,a.aname,a.nationality,a.category,"
+    $sqlstr = "SELECT a.id,a.appid,p.PostName as post,a.blockapp, sd.subdiv as subapp,a.aname,a.nationality,a.category,"
         . "a.father,a.dob,a.sex,a.age_yr,a.mobile,a.pre_address,a.pre_block,a.pre_subdiv,a.pre_dist,a.pre_pin,"
         . "a.pre_state,a.perm_address,a.perm_block,a.perm_subdiv,a.perm_dist,a.perm_pin,a.perm_state,a.email,a.pin,"
         . "a.compknowledge,a.photo from applicant as a,subdivision as sd,post as p "
@@ -31,24 +31,28 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
 ?>
 <html>
 <head>
-    <title>Application Print</title>
+    <title>Application Print - <?php echo OFFICE; ?></title>
     <style type="text/css">
         body {
             bgcolor: white;
             color: black;
-            font-family: verdana;
+            font-family: Verdana, Geneva, sans-serif;
             font-size: 12px;
         }
 
         tr {
-            font-family: verdana;
+            font-family: Verdana, Geneva, sans-serif;
             font-size: 12px;
         }
 
         td {
-            font-family: verdana;
+            font-family: Verdana, Geneva, sans-serif;
             font-size: 12px;
             font-weight: normal;
+        }
+
+        div {
+            font-family: Arial, Helvetica, sans-serif;
         }
     </style>
 </head>
@@ -72,10 +76,7 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
             </tr>
             <tr>
                 <td style="border-bottom: solid 1px black; border-top: solid 1px black" align="left" colspan="3">
-                    <div align="center">&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; Email:- <?php echo EMAIL; ?>
+                    <div align="right">Email:- <?php echo EMAIL; ?>
                         <input name="Print" onClick="window.print()" type="button" value="Print"/>
                     </div>
                 </td>
@@ -87,24 +88,33 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                     <table width="99%" border="0">
                         <tr>
                             <td colspan="4">
-                                <div align="center"><font size="3" face="Arial, Helvetica, sans-serif"><strong>Application
-                                            for the Post : <?php echo $row["post"]; ?></strong></font><strong><font
-                                            size="3" face="Arial, Helvetica, sans-serif"> &nbsp;on contractual basis
-                                            for <?php echo $row["blockapp"]; ?>
-                                            under <?php echo $row["subapp"]; ?> Sub-Division</font></strong></div>
+                                <div align="center">
+                                    <font size="3" face="Arial, Helvetica, sans-serif">
+                                        <strong>Application for the Post:
+                                            <?php echo $row["post"]; ?>on contractual basis
+                                            <!-- for <?php echo $row["blockapp"]; ?>
+                                            under <?php echo $row["subapp"]; ?> Sub-Division -->
+                                        </strong>
+                                    </font>
+                                </div>
                             </td>
                         </tr>
                         <tr>
-                            <td width="13%" height="28"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Registration
-                                        Number:</strong></font></td>
-                            <td width="41%"><font size="1"
-                                                  face="Arial, Helvetica, sans-serif"><?php echo $row["appid"]; ?></font>
+                            <td width="13%" height="28">
+                                <font size="1" face="Arial, Helvetica, sans-serif">
+                                    <strong>Registration Number:</strong>
+                                </font>
+                            </td>
+                            <td width="41%">
+                                <font size="1" face="Arial, Helvetica, sans-serif">
+                                    <?php echo $row["appid"] . '[' . $row["id"] . ']'; ?>
+                                </font>
                             </td>
                             <td colspan="2" rowspan="3">
-                                <div align="right"><img src=<?php echo '"photo/' . $filename2 . '"'; ?>name="img"
-                                                        width="125" height="150" id="img"><font size="1"
-                                                                                                face="Arial, Helvetica, sans-serif">
-                                        &nbsp;&nbsp;</font></div>
+                                <div align="right">
+                                    <img src=<?php echo '"photo/' . $filename2 . '"'; ?>name="img"
+                                                        width="125" height="150" id="img" border="1">
+                                </div>
                             </td>
                         </tr>
                         <tr>
@@ -155,68 +165,112 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                         <tr>
                             <td height="28"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Present
                                         Address:</strong></font></td>
-                            <td colspan="3"><font size="1"
-                                                  face="Arial, Helvetica, sans-serif"><?php echo $row["pre_address"]; ?><?php echo ",Block:-" . $row["pre_block"]; ?><?php echo ",Sub-Division:-" . $row["pre_subdiv"]; ?><?php echo ",District:-" . $row["pre_dist"]; ?>
+                            <td colspan="3">
+                                <font size="1"
+                                      face="Arial, Helvetica, sans-serif">
+                                    <?php echo $row["pre_address"]; ?>
+                                    <?php echo ",Block:-" . $row["pre_block"]; ?>
+                                    <?php echo ",Sub-Division:-" . $row["pre_subdiv"]; ?>
+                                    <?php echo ",District:-" . $row["pre_dist"]; ?>
                                     &nbsp;&nbsp;&nbsp;<?php echo "PIN:-" . $row["pre_pin"]; ?>
-                                    &nbsp;&nbsp;&nbsp;<?php echo "State:-" . $row["pre_state"]; ?></font></td>
-                        </tr>
-                        <tr>
-                            <td height="27"><font size="1" face="Arial, Helvetica, sans-serif"><strong>Permanent
-                                        Address:</strong></font></td>
-                            <td colspan="3"><font size="1"
-                                                  face="Arial, Helvetica, sans-serif"><?php echo $row["perm_address"]; ?><?php echo ",Block:-" . $row["perm_block"]; ?><?php echo ",Sub-Division:-" . $row["perm_subdiv"]; ?><?php echo ",District:-" . $row["perm_dist"]; ?>
-                                    &nbsp;&nbsp;&nbsp;<?php echo "PIN:-" . $row["perm_pin"]; ?>
-                                    &nbsp;&nbsp;&nbsp;<?php echo "State:-" . $row["perm_state"]; ?></font></td>
-                        </tr>
-                        <tr>
-                            <td height="26"><font size="1"
-                                                  face="Arial, Helvetica, sans-serif"><strong>Email:</strong></font>
-                            </td>
-                            <td><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["email"]; ?></font>
-                            </td>
-                            <td><font size="1" face="Arial, Helvetica, sans-serif"><strong>Mobile:</strong></font></td>
-                            <td><font size="1" face="Arial, Helvetica, sans-serif"><?php echo $row["mobile"]; ?></font>
+                                    &nbsp;&nbsp;&nbsp;<?php echo "State:-" . $row["pre_state"]; ?>
+                                </font>
                             </td>
                         </tr>
                         <tr>
-                            <td height="18" colspan="2"><font size="2" face="Arial, Helvetica, sans-serif"><strong>Educational
-                                        Qualification:</strong></font></td>
-                            <td><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
-                            <td><font size="1" face="Arial, Helvetica, sans-serif">&nbsp;</font></td>
+                            <td height="27">
+                                <font size="1" face="Arial, Helvetica, sans-serif">
+                                    <strong>Permanent Address:</strong>
+                                </font>
+                            </td>
+                            <td colspan="3">
+                                <font size="1"
+                                      face="Arial, Helvetica, sans-serif">
+                                    <?php echo $row["perm_address"]; ?>
+                                    <?php echo ",Block:-" . $row["perm_block"]; ?>
+                                    <?php echo ",Sub-Division:-" . $row["perm_subdiv"]; ?>
+                                    <?php echo ",District:-" . $row["perm_dist"]; ?>
+                                    <?php echo "PIN:-" . $row["perm_pin"]; ?>
+                                    <?php echo "State:-" . $row["perm_state"]; ?>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="26">
+                                <font size="1" face="Arial, Helvetica, sans-serif">
+                                    <strong>Email:</strong>
+                                </font>
+                            </td>
+                            <td>
+                                <font size="1" face="Arial, Helvetica, sans-serif">
+                                    <?php echo $row["email"]; ?>
+                                </font>
+                            </td>
+                            <td>
+                                <font size="1" face="Arial, Helvetica, sans-serif">
+                                    <strong>Mobile:</strong>
+                                </font>
+                            </td>
+                            <td>
+                                <font size="1" face="Arial, Helvetica, sans-serif">
+                                    <?php echo $row["mobile"]; ?>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="18" colspan="2">
+                                <font size="2" face="Arial, Helvetica, sans-serif">
+                                    <strong>Educational Qualification:</strong>
+                                </font>
+                            </td>
+                            <td colspan="2"></td>
                         </tr>
                         <tr>
                             <td height="64" colspan="4">
                                 <table width="99%" border="1" cellpadding="0" cellspacing="0" bordercolor="#000000">
                                     <tr bgcolor="#CCFFFF">
                                         <td width="14%">
-                                            <div align="center"><font color="#003399" size="1"
-                                                                      face="Arial, Helvetica, sans-serif"><strong>Qualification</strong></font>
+                                            <div align="center">
+                                                <font color="#003399" size="1" face="Arial, Helvetica, sans-serif">
+                                                    <strong>Qualification</strong>
+                                                </font>
                                             </div>
                                         </td>
                                         <td width="16%">
-                                            <div align="center"><font color="#003399" size="1"
-                                                                      face="Arial, Helvetica, sans-serif"><strong>Name
-                                                        of the Institution</strong></font></div>
+                                            <div align="center">
+                                                <font color="#003399" size="1"
+                                                      face="Arial, Helvetica, sans-serif">
+                                                    <strong>Name of the Institution</strong>
+                                                </font></div>
                                         </td>
                                         <td width="8%">
-                                            <div align="center"><font color="#003399" size="1"
-                                                                      face="Arial, Helvetica, sans-serif"><strong>Year
-                                                        of Passing</strong></font></div>
+                                            <div align="center">
+                                                <font color="#003399" size="1" face="Arial, Helvetica, sans-serif">
+                                                    <strong>Year
+                                                        of Passing</strong>
+                                                </font>
+                                            </div>
                                         </td>
                                         <td width="8%">
-                                            <div align="center"><font color="#003399" size="1"
-                                                                      face="Arial, Helvetica, sans-serif"><strong>Subject</strong></font>
+                                            <div align="center">
+                                                <font color="#003399" size="1" face="Arial, Helvetica, sans-serif">
+                                                    <strong>Subject</strong>
+                                                </font>
                                             </div>
                                         </td>
                                         <td width="16%">
-                                            <div align="center"><strong><font color="#003399" size="1"
-                                                                              face="Arial, Helvetica, sans-serif">Total
-                                                        Marks</font></strong></div>
+                                            <div align="center">
+                                                <font color="#003399" size="1" face="Arial, Helvetica, sans-serif">
+                                                    <strong>Total </strong> Marks
+                                                </font>
+                                            </div>
                                         </td>
                                         <td width="18%">
-                                            <div align="center"><font color="#003399" size="1"
-                                                                      face="Arial, Helvetica, sans-serif"><strong>Marks
-                                                        Obtained</strong></font></div>
+                                            <div align="center">
+                                                <font color="#003399" size="1" face="Arial, Helvetica, sans-serif">
+                                                    <strong>Marks Obtained</strong>
+                                                </font>
+                                            </div>
                                         </td>
                                         <td width="18%">
                                             <div align="center">
@@ -504,19 +558,29 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                                                         of Course</font></strong></div>
                                         </td>
                                         <td width="16%">
-                                            <div align="center"><strong><font color="#003399" size="1"
-                                                                              face="Arial, Helvetica, sans-serif">Subject
-                                                        Covered</font></strong></div>
+                                            <div align="center">
+                                                <font color="#003399" size="1"
+                                                      face="Arial, Helvetica, sans-serif">
+                                                    <strong>Subject Covered</strong>
+                                                </font>
+
+                                            </div>
                                         </td>
                                         <td width="8%">
-                                            <div align="center"><font color="#003399" size="1"
-                                                                      face="Arial, Helvetica, sans-serif"><strong>Year
-                                                        of Passing</strong></font></div>
+                                            <div align="center">
+                                                <font color="#003399" size="1"
+                                                      face="Arial, Helvetica, sans-serif">
+                                                    <strong>Year of Passing</strong>
+                                                </font>
+                                            </div>
                                         </td>
                                         <td width="18%">
                                             <div align="center">
-                                                <div align="center"><strong><font color="#003399" size="1"
-                                                                                  face="Arial, Helvetica, sans-serif">Institute</font></strong>
+                                                <div align="center">
+                                                    <strong>
+                                                        <font color="#003399" size="1"
+                                                              face="Arial, Helvetica, sans-serif">Institute</font>
+                                                    </strong>
                                                 </div>
                                             </div>
                                         </td>
@@ -536,59 +600,71 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                                         ?>
                                         <tr>
                                             <td height="22">
-                                                <div align="center"><font size="1"
-                                                                          face="Arial, Helvetica, sans-serif"><strong>  <?php if ($compRow["course"] != "") {
+                                                <div align="center">
+                                                    <font size="1"
+                                                          face="Arial, Helvetica, sans-serif">
+                                                        <strong>  <?php if ($compRow["course"] != "") {
                                                                 echo $compRow["course"];
                                                             } else {
                                                                 echo "------";
-                                                            } ?></strong></font></div>
+                                                            } ?></strong>
+                                                    </font>
+                                                </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <div align="center"><font size="1"
-                                                                              face="Arial, Helvetica, sans-serif">
+                                                    <div align="center">
+                                                        <font size="1"
+                                                              face="Arial, Helvetica, sans-serif">
                                                             <?php if ($compRow["subject"] != "") {
                                                                 echo $compRow["subject"];
                                                             } else {
                                                                 echo "------";
                                                             } ?>
-                                                        </font></div>
+                                                        </font>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <div align="center"><font size="1"
-                                                                              face="Arial, Helvetica, sans-serif">
+                                                    <div align="center">
+                                                        <font size="1"
+                                                              face="Arial, Helvetica, sans-serif">
                                                             <?php if ($compRow["year"] != "") {
                                                                 echo $compRow["year"];
                                                             } else {
                                                                 echo "------";
                                                             } ?>
-                                                        </font></div>
+                                                        </font>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <div align="center"><font size="1"
-                                                                              face="Arial, Helvetica, sans-serif">
+                                                    <div align="center">
+                                                        <font size="1"
+                                                              face="Arial, Helvetica, sans-serif">
                                                             <?php if ($compRow["institute"] != "") {
                                                                 echo $compRow["institute"];
                                                             } else {
                                                                 echo "------";
                                                             } ?>
-                                                        </font></div>
+                                                        </font>
+                                                    </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div>
-                                                    <div align="center"><font size="1"
-                                                                              face="Arial, Helvetica, sans-serif">
+                                                    <div align="center">
+                                                        <font size="1"
+                                                              face="Arial, Helvetica, sans-serif">
                                                             <?php if ($compRow["duration"] != "") {
                                                                 echo $compRow["duration"];
                                                             } else {
                                                                 echo "------";
                                                             } ?>
-                                                        </font></div>
+                                                        </font>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -599,7 +675,8 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                             </td>
                         </tr>
                         <tr>
-                            <td height="83" colspan="4"><font size="1" face="Arial, Helvetica, sans-serif">
+                            <td height="83" colspan="4">
+                                <font size="1" face="Arial, Helvetica, sans-serif">
                                     I hereby declare that I fulfil the eligibility criteria for the
                                     post in terms of educational qualifications (including percentage
                                     of marks obtained in the examination and certificate course),
@@ -612,19 +689,21 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                                     and nothing has been concealed/distorted. I understand that
                                     if at any time I am found to have concealed/distorted any material
                                     information my candidature/appointment is liable to summary
-                                    termination without notice or compensation.</font></td>
+                                    termination without notice or compensation.
+                                </font>
+                            </td>
                         </tr>
                         <tr>
+                            <td height="114" colspan="2"></td>
                             <td height="114" colspan="2">
-                                <div align="left"><font size="1" face="Arial, Helvetica, sans-serif"><br>
-                                    </font></div>
-                            </td>
-                            <td height="114" colspan="2">
-                                <div align="right"><img src=<?php echo '"photo/' . $filename3 . '"'; ?>name="img"
-                                                        width="166" height="60" id="img"><font size="1"
-                                                                                               face="Arial, Helvetica, sans-serif"><strong><br>
-                                            ..................................................... </strong><br>
-                                        <strong>Signature of the Applicant</strong> </font></div>
+                                <div align="right">
+                                    <img src=<?php echo '"photo/' . $filename3 . '"'; ?>name="img"
+                                         width="166" height="60" id="img">
+                                    <br/>
+                                    <strong> ..................................................... </strong>
+                                    <br/>
+                                    <strong>Signature of the Applicant</strong>
+                                </div>
                             </td>
                         </tr>
                     </table>
