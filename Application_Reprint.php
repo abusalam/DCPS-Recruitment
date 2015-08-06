@@ -7,7 +7,7 @@ function DisplayDefaultForm()
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to DCPS Online Portal-Application Reprint</title>
+        <title>Application Reprint - <?php echo OFFICE; ?></title>
         <link href="CSS/inb.css" rel="stylesheet" type="text/css">
     </head>
     <body topmargin="0" oncontextmenu="return false;" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
@@ -33,7 +33,7 @@ function DisplayDefaultForm()
                 <td class="belowheader" height="2"></td>
             </tr>
             <tr>
-                <td height="300" valign="top">
+                <td valign="top">
                     <div class="header">Print Application Form</div>
                     <div style="float: right;color: #ff0000;margin-right: 50px;">
                         <strong>* Mandatory Field</strong>
@@ -91,9 +91,10 @@ function DisplayDefaultForm()
                                         </tr>
                                         <tr>
                                             <td colspan="2" class="tablecontent1" align="center" valign="top"><font
-                                                    color="#0099CC">Design and
-                                                    Develped by National Informatics Centre and Content
-                                                    Provided By DCPS Paschim Medinipur West Bengal </font></td>
+                                                    color="#0099CC">Designed and
+                                                    Developed by National Informatics Centre and Content
+                                                    Provided By <?php echo OFFICE . ', ' . DISTRICT; ?>, West
+                                                    Bengal </font></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -111,7 +112,7 @@ function DisplayDefaultForm()
     </div>
     </body>
     </html>
-<?php
+    <?php
 }
 
 function check_pin_appid($pin, $appid)

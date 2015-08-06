@@ -7,13 +7,12 @@ function DisplayDefaultForm()
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to SSM Online Portal-Application For Email the Pin</title>
+        <title>Forgot Pin - <?php echo OFFICE; ?></title>
         <link href="CSS/inb.css" rel="stylesheet" type="text/css">
     </head>
     <body topmargin="0" oncontextmenu="return false;" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
-    <div class="tdbg" style="width: 600px;">
-        <table border="0" cellpadding="0" cellspacing="0">
-
+    <div class="tdbg" style="width: 700px;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
             <tbody>
             <tr>
                 <td align="left">
@@ -33,7 +32,7 @@ function DisplayDefaultForm()
                 <td class="belowheader" height="2"></td>
             </tr>
             <tr>
-                <td height="300" valign="top">
+                <td valign="top">
                     <div class="header" bgcolor="#e9fafe">Email Pin
                     </div>
                     <div style="float: right;color: #ff0000;margin-right: 50px;">
@@ -86,9 +85,9 @@ function DisplayDefaultForm()
                                         </tr>
                                         <tr>
                                             <td colspan="2" class="tablecontent1" align="center" valign="top">
-                                                <font color="#0099CC">Design
-                                                    and Develped by National Informatics Centre<br>
-                                                    Paschim Medinipur,West Bengal</font></td>
+                                                <font color="#0099CC">Designed
+                                                    and Developed by National Informatics Centre
+                                                    Purba Medinipur, West Bengal</font></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -99,14 +98,12 @@ function DisplayDefaultForm()
                     </table>
                 </td>
             </tr>
-            <tr>
-            </tr>
             </tbody>
         </table>
     </div>
     </body>
     </html>
-<?php
+    <?php
 }
 
 function check_appid($appid, &$pin)
@@ -143,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $headers = 'From: recruitment@prirecruitment.org' . "\r\n" .
                         'Reply-To: ' . "dprdotamlukpm@gmail.com" . "\r\n" .
                         'X-Mailer: PHP/' . phpversion();
-                    mail($email, "PASCHIM MEDINIPUR DPRDO RECRUITMENT :: PIN FOR THE REGISTRATION NO $appid", stripslashes($message), $headers);
+                    mail($email, ORG . " :: PIN FOR THE REGISTRATION NO $appid", stripslashes($message), $headers);
                     DisplayDefaultForm();
                     echo "<script type=\"text/javascript\">alert(\"Email has been sent to your mail id specifying your pin\")</script>";
                 }

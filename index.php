@@ -11,14 +11,14 @@ include('settings.inc.php');
 </script>
 <html>
 <head>
-    <title>Welcome to District Child Protection Society Online Recruitment Portal</title>
+    <title>Welcome to <?php echo OFFICE; ?> Online Recruitment Portal</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
     <link href="CSS/inb.css" rel="stylesheet" type="text/css">
 </head>
 
 <body topmargin="0" leftmargin="0" rightmargin="0" oncontextmenu="return false;" marginheight="0" marginwidth="0">
 <div class="tdbg" style="width: 700px;">
-    <table border="0" cellpadding="0" cellspacing="0" >
+    <table border="0" cellpadding="0" cellspacing="0">
         <tbody>
         <tr>
             <td align="left">
@@ -43,8 +43,9 @@ include('settings.inc.php');
                     <tbody>
                     <tr>
                         <td colspan="2" class="tablecontent1" align="center" valign="middle">
-                            <a href="RSBY Recruitment2015.pdf" target="_blank" class="disability">Employment
-                                Notice</a>
+                            <a href="https://www.paschimmedinipur.gov.in/apps/publish/get_file.php?ID=5325"
+                               class="disability">
+                                Employment Notice</a>
                         </td>
                     </tr>
                     <tr>
@@ -53,7 +54,7 @@ include('settings.inc.php');
                                 src="image/bullet1.gif" height="11" width="7"></td>
                         <td class="tablecontent1" align="left" valign="middle">
                             <a class="disability" href="#"
-                               onClick="javascript:mypopup('Application_entry.php','600','700')">Apply
+                               onClick="mypopup('Application_entry.php','600','700')">Apply
                                 Online</a>
                         </td>
                     </tr>
@@ -62,7 +63,7 @@ include('settings.inc.php');
                                 src="image/bullet1.gif" height="11" width="7"></td>
                         <td class="tablecontent1" align="left" valign="middle">
                             <a class="disability" href="#"
-                               onClick="javascript:mypopup('Add_image.php','600','700')">Add
+                               onClick="mypopup('Add_image.php','600','700')">Add
                                 Photo & Signature </a></td>
                     </tr>
                     <tr>
@@ -70,7 +71,7 @@ include('settings.inc.php');
                                 src="image/bullet1.gif" height="11" width="7"></td>
                         <td class="tablecontent1" align="left" valign="middle">
                             <a class="disability" href="#"
-                               onClick="javascript:mypopup('Application_Reprint.php','600','700')">Application
+                               onClick="mypopup('Application_Reprint.php','600','700')">Application
                                 Reprint </a>
                         </td>
                     </tr>
@@ -89,7 +90,7 @@ include('settings.inc.php');
                     <tr>
                         <td colspan="2" class="tablecontent1" align="center" valign="middle">
                             <a class="linkfooter" href=""
-                               onClick="javascript:mypopup('note.php','600','700')">Steps
+                               onClick="mypopup('note.php','600','700')">Steps
                                 to enable JavaScript in Internet Explorer versions (6.0,7.0,8.0),Mozilla
                                 Firefox3.0, Google Chrome2.0</a></td>
                     </tr>
@@ -109,9 +110,9 @@ include('settings.inc.php');
                     </tr>
                     <tr>
                         <td colspan="2" class="tablecontent1" align="center" valign="middle">
-                            <p><span class="link1"><font color="#00a2cf">Design and
-                                        Develped by National Informatics Centre and Content
-                                        Provided By <?php echo OFFICE . ', ' . DISTRICT; ?> West Bengal
+                            <p><span class="link1"><font color="#00a2cf">Designed and
+                                        Developed by National Informatics Centre and Content
+                                        Provided By <?php echo OFFICE . ', ' . DISTRICT; ?>, West Bengal
                                         <br>
                                         The application is compatible with Internet Explorer
                                         versions (6.0,7.0,8.0),Mozilla Firefox3.0, Google

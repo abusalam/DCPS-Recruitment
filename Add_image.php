@@ -7,7 +7,7 @@ function DisplayDefaultForm()
     <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome to DCPS Online Portal-Upload Photo</title>
+        <title>Upload Photograph &amp; Signature - <?php echo OFFICE; ?></title>
         <link href="CSS/inb.css" rel="stylesheet" type="text/css">
     </head>
     <body topmargin="0" oncontextmenu="return false;" leftmargin="0" rightmargin="0" marginheight="0" marginwidth="0">
@@ -283,7 +283,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         }
                         if (!get_magic_quotes_gpc()) {
-
                             $fileName1 = addslashes($fileName1);
                             $fileName2 = addslashes($fileName2);
                         }
