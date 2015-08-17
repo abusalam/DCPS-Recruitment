@@ -944,8 +944,7 @@ function application_Register()
                                         <tr>
                                             <td width="24%" class="tablecontent1"><font size="2"
                                                                                         face="Arial, Helvetica, sans-serif">
-                                                    <strong>Computer knowledge (MS Office and Internet )
-                                                        :-</strong></font></td>
+                                                    <strong>Any other Computer knowledge :-</strong></font></td>
                                             <td width="5%" class="tablecontent1"><label>
                                                     <input type="radio" name="computer" value="Y" id="computer_0"
                                                            onClick="showTable(1);">

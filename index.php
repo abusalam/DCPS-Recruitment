@@ -43,7 +43,7 @@ include('settings.inc.php');
                     <tbody>
                     <tr>
                         <td colspan="2" class="tablecontent1" align="center" valign="middle">
-                            <a href="https://www.paschimmedinipur.gov.in/apps/publish/get_file.php?ID=5325"
+                            <a href="<?php echo NOTICE_URL;?>"
                                class="disability">
                                 Employment Notice</a>
                         </td>

@@ -5,7 +5,8 @@ define("ORG", "District Social Welfare Section :: District Child Protection Unit
 define("OFFICE", "District Child Protection Unit");
 define("LAST_DATE_APP", "31/08/2015 upto 5.00 P.M");
 define("HARD_COPY_LAST_DATE", "10/09/2015 upto 5.00 P.M");
-define("EMAIL", "dcpspmd@gmail.com");
+define("EMAIL", "email-id@example.com");
+define("NOTICE_URL","https://www.paschimmedinipur.gov.in/apps/publish/get_file.php?ID=");
 
 /**
  * Defines MySQL Server Hostname
@@ -22,4 +23,4 @@ define('MySQL_Pass', '');
 /**
  * Defines MySQL Server Database Name
  */
-define('MySQL_DB', 'dcps');
+define('MySQL_DB', '');
