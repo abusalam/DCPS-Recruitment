@@ -85,7 +85,7 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                                                         </p>
 
                                                         <p><?php echo $c["PostName"]; ?>&nbsp; at different Block under
-                                                            Purba Medinipur District </p>
+                                                            <?php echo DISTRICT; ?> District </p>
                                                     </div>
                                                     <p align="center"><font color="#000066">Keep
                                                             your Registration Number for future purpose.</font></p>
@@ -106,9 +106,11 @@ if (isset($_GET["appid"]) && isset($_GET["pin"])) {
                                                     <div align="center"><font color="#6600FF" size="2"
                                                                               face="Arial, Helvetica, sans-serif">If
                                                             you are having trouble accessing or need assistance,please
-                                                            e-mail us on daf.purbamedinpur@gmail.com
-                                                            and for information and details visit
-                                                            http://purbamedinipur.gov.in/</font></div>
+                                                            e-mail us on <?php echo EMAIL; ?>
+                                                            and for information and details see
+                                                            <a href="<?php echo NOTICE_URL;?>"
+                                                               class="disability">
+                                                                Employment Notice</a></font></div>
                                                 </td>
                                             </tr>
                                             <tr>

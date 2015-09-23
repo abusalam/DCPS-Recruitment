@@ -944,15 +944,15 @@ function application_Register()
                                         <tr>
                                             <td width="24%" class="tablecontent1"><font size="2"
                                                                                         face="Arial, Helvetica, sans-serif">
-                                                    <strong>Any other Computer knowledge :-</strong></font></td>
+                                                    <strong>Any other Computer knowledge:-</strong></font></td>
                                             <td width="5%" class="tablecontent1"><label>
                                                     <input type="radio" name="computer" value="Y" id="computer_0"
-                                                           onClick="showTable(1);">
+                                                           onClick="showTable(1);" checked="CHECKED">
                                                     <font size="2" face="Arial, Helvetica, sans-serif">
                                                         Yes</font></label></td>
                                             <td width="71%" class="tablecontent1"><label>
                                                     <input name="computer" type="radio" id="computer_1"
-                                                           onClick="showTable(2);" value="N" checked="CHECKED">
+                                                           onClick="showTable(2);" value="N">
                                                     <font size="2" face="Arial, Helvetica, sans-serif">No</font></label>
                                             </td>
                                         </tr>
@@ -1271,8 +1271,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             }
         }
-        if ((lastRow - 2) < 7) {
-            document.getElementById("eduCount").value = (lastRow - 1);
+        if (lastRow < 7) {
+            document.getElementById("eduCount").value = lastRow;
 
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -1295,7 +1295,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 }
             };
-            xmlhttp.open("GET", "addRowOnQuali.php?rowNo=" + (lastRow - 2), true);
+            xmlhttp.open("GET", "addRowOnQuali.php?rowNo=" + (lastRow - 1), true);
             xmlhttp.send();
         }
         else {
@@ -1321,9 +1321,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
 
-        if ((lastRow - 2) < 5) {
+        if (lastRow < 5) {
 
-            document.getElementById("expCount").value = (lastRow - 1);
+            document.getElementById("expCount").value = lastRow;
             if (window.XMLHttpRequest) {
                 // code for IE7+, Firefox, Chrome, Opera, Safari
                 xmlhttp = new XMLHttpRequest();
@@ -1344,7 +1344,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 }
             };
-            xmlhttp.open("GET", "addRowOnExp.php?rowNo=" + (lastRow - 2), true);
+            xmlhttp.open("GET", "addRowOnExp.php?rowNo=" + (lastRow - 1), true);
             xmlhttp.send();
         }
         else {
@@ -1359,8 +1359,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     function addRowOnExpComputer() {
         var table = document.getElementById("expComputer");
         var lastRow = table.rows.length;
-        if ((lastRow - 2) < 3) {
-            document.getElementById("compCount").value = (lastRow - 1);
+        if (lastRow < 3) {
+            document.getElementById("compCount").value = lastRow;
             var len = lastRow - 2;
 
             var myArray = new Array(len);
@@ -1393,7 +1393,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     }
                 }
             };
-            xmlhttp.open("GET", "addRowOnExpComputer.php?rowNo=" + (lastRow - 2), true);
+            xmlhttp.open("GET", "addRowOnExpComputer.php?rowNo=" + (lastRow - 1), true);
             xmlhttp.send();
         }
         else {
@@ -1421,7 +1421,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (lastRow > 2) {
             document.getElementById("expComputer").deleteRow(lastRow - 1);
-            document.getElementById("compCount").value = (lastRow - 3);
+            document.getElementById("compCount").value = (lastRow - 2);
         }
     }
     function deleteRowFromExp() {
@@ -1430,16 +1430,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (lastRow > 2) {
             document.getElementById("experience").deleteRow(lastRow - 1);
-            document.getElementById("expCount").value = (lastRow - 3);
+            document.getElementById("expCount").value = (lastRow - 2);
         }
     }
     function deleteRowFromEducation() {
         var table = document.getElementById("education");
         var lastRow = table.rows.length;
 
-        if (lastRow > 3) {
+        if (lastRow > 2) {
             document.getElementById("education").deleteRow(lastRow - 1);
-            document.getElementById("eduCount").value = (lastRow - 3);
+            document.getElementById("eduCount").value = (lastRow - 2);
         }
     }
 
