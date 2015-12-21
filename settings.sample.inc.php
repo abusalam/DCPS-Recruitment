@@ -7,6 +7,7 @@ define("LAST_DATE_APP", "31/08/2015 upto 5.00 P.M");
 define("HARD_COPY_LAST_DATE", "10/09/2015 upto 5.00 P.M");
 define("EMAIL", "email-id@example.com");
 define("NOTICE_URL","https://www.paschimmedinipur.gov.in/apps/publish/get_file.php?ID=");
+define("SIGN", "image/Sign.png");
 
 /**
  * Defines MySQL Server Hostname

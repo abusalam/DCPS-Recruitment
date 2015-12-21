@@ -3,12 +3,16 @@ include("connection.php");
 
 if (isset($_GET["examroll"])) {
     $examroll = trim($_GET["examroll"]);
-    $sqlstr = "SELECT a.post, a.examroll, a.aname, a.father, a.perm_address, a.perm_subdiv, perm_pin, a.mobile, a.perm_state,
- PostName, ExamDateTime, ExamVenue
- FROM applicant as a inner join post as p on ( a.post = p.PostCode ) where a.examroll = '" . Remove_SQLi($examroll) . "'";
+    $sqlstr = "SELECT a.appid, a.post, a.examroll, a.aname, a.father, a.perm_address,
+  a.perm_subdiv, perm_pin, a.mobile, a.perm_state, PostName, ExamDateTime, ExamVenue
+  FROM applicant as a inner join post as p on ( a.post = p.PostCode )
+  where a.examroll = '" . Remove_SQLi($examroll) . "'";
 
     $result = executeSqlQuery($sqlstr);
     $row = mysql_fetch_array($result);
+    $AppID = str_replace("/", "_", $row["appid"]);
+    $Photo = "photo/" . $AppID . "_1.jpg";
+    $Sign = "photo/" . $AppID . "_2.jpg";
     ?>
     <html>
     <head>
@@ -25,6 +29,10 @@ if (isset($_GET["examroll"])) {
                     color: black;
                     font-family: verdana;
                     font-size: 0.8em;
+                }
+
+                .tips {
+                    display: none;
                 }
             }
 
@@ -51,7 +59,7 @@ if (isset($_GET["examroll"])) {
             <h2 style="clear: both;text-align: center">Provisional Admit Card</h2>
             <hr/>
             <div style="float: right; border: 1px solid;padding: 2px;">
-                <img src="photo/<?php echo $examroll; ?>_1.jpg" width="122" alt="photograph">
+                <img src="<?php echo $Photo; ?>" width="122" alt="photograph">
             </div>
             <div>
                 <h3>Post: <?php echo $row["PostName"]; ?></h3>
@@ -109,14 +117,16 @@ if (isset($_GET["examroll"])) {
                 </li>
             </ol>
             <div style="float: right;text-align: center;padding-bottom: 20px;">
-                <img src="image/Untitled.png" width="85" height="79"><br>
+                <img src="<?php echo SIGN;?>" width="85"><br>
                 District Nodal Officer<br>
                 Rastriya Swastha Bima Yojana<br>
                 Paschim Medinipur
             </div>
             <p>
-                NB: Top 10 Candidates from IT and 5 Candidates from Hospital Management securing qualifying marks in
-                written test will be eligible for Computer Test.
+                <strong>
+                    NB: Candidates securing Top 10 marks from IT and Top 5 marks from Hospital Management
+                    in written test will be eligible for Computer Test to be held on the same day.
+                </strong>
             </p>
 
             <div style="clear: both; text-align: center; border-top: 1px dashed; padding-top: 10px;">
@@ -124,12 +134,12 @@ if (isset($_GET["examroll"])) {
             </div>
             <div style="padding-bottom: 50px;">
                 <div style="float: right; border: 1px solid;padding: 5px;margin-right: 10px;text-align: center;">
-                    <img src="photo/<?php echo $examroll; ?>_2.jpg" width="240" alt="photograph"><br/>
+                    <img src="<?php echo $Sign; ?>" width="240" alt="photograph"><br/>
 
                     <div style="padding-top: 5px;">Signature Uploaded by the Candidate</div>
                 </div>
                 <div style="float: left; border: 1px solid;padding: 2px;margin-right: 10px;">
-                    <img src="photo/<?php echo $examroll; ?>_1.jpg" width="122" alt="photograph">
+                    <img src="<?php echo $Photo; ?>" width="122" alt="photograph">
                 </div>
                 <h3><span>Post: <?php echo $row["PostName"]; ?></span></h3>
 
@@ -147,7 +157,10 @@ if (isset($_GET["examroll"])) {
                     Signature of Invigilator</strong>
             </div>
             <br style="clear: both;">
-
+            <div class="tips" style="text-align: center;color: #6D7F04; font-size: 20px;">
+                <hr/>
+                (* Print This Admit Card Only on A4 Size Paper in Portrait)
+            </div>
         </div>
     </div>
 
