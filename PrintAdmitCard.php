@@ -3,13 +3,18 @@ include("connection.php");
 
 if (isset($_GET["examroll"])) {
     $examroll = trim($_GET["examroll"]);
-    $sqlstr = "SELECT a.appid, a.post, a.examroll, a.aname, a.father, a.perm_address,
-  a.perm_subdiv, perm_pin, a.mobile, a.perm_state, PostName, ExamDateTime, ExamVenue
-  FROM applicant as a inner join post as p on ( a.post = p.PostCode )
-  where a.examroll = '" . Remove_SQLi($examroll) . "'";
+    $Rejected =false;
+    if (!strchr($examroll, "R")) {
+        $sqlstr = "SELECT a.appid, a.post, a.examroll, a.aname, a.father, a.perm_address,
+                    a.perm_subdiv, perm_pin, a.mobile, a.perm_state, PostName, ExamDateTime, ExamVenue
+                    FROM applicant as a inner join post as p on ( a.post = p.PostCode )
+                    where a.examroll = '" . Remove_SQLi($examroll) . "'";
+        $result = executeSqlQuery($sqlstr);
+        $row = mysql_fetch_array($result);
+    } else {
+        $Rejected=true;
+    }
 
-    $result = executeSqlQuery($sqlstr);
-    $row = mysql_fetch_array($result);
     $AppID = str_replace("/", "_", $row["appid"]);
     $Photo = "photo/" . $AppID . "_1.jpg";
     $Sign = "photo/" . $AppID . "_2.jpg";
@@ -56,7 +61,7 @@ if (isset($_GET["examroll"])) {
 
     <div>
         <div style="margin-left: auto;margin-right: auto; width: 720px; border: 1px solid;padding: 5px;">
-            <?php if ($examroll == '') : ?>
+            <?php if ($Rejected) : ?>
                 <h2 style="clear: both;text-align: center">
                     Your Application has been rejected.
                 </h2>
