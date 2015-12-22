@@ -12,6 +12,10 @@ if (isset($_GET["examroll"])) {
         $result = executeSqlQuery($sqlstr);
         $row = mysql_fetch_array($result);
     } else {
+        $sqlstr = "SELECT `RejectionRemarks` FROM applicant
+                    where examroll = '" . Remove_SQLi($examroll) . "'";
+        $result = executeSqlQuery($sqlstr);
+        $row = mysql_fetch_array($result);
         $Rejected=true;
     }
 
@@ -65,6 +69,10 @@ if (isset($_GET["examroll"])) {
                 <h2 style="clear: both;text-align: center">
                     Your Application has been rejected.
                 </h2>
+                <strong>Reason of Rejection:</strong>
+                <span style="color: red;">
+                    <?php echo $row["RejectionRemarks"];?>.
+                </span>
             <?php else : ?>
                 <h2 style="clear: both;text-align: center">Provisional Admit Card</h2>
                 <hr/>
@@ -137,8 +145,8 @@ if (isset($_GET["examroll"])) {
                 </div>
                 <p>
                     <strong>
-                        NB: Candidates securing Top 10 marks from IT and Top 5 marks from Hospital Management
-                        in written test will be eligible for Computer Test to be held on the same day.
+                        NB: Candidates securing highest marks in written test upto 10 from IT and
+                        upto 5 from Hospital Management will be eligible for Computer Test to be held on the same day.
                     </strong>
                 </p>
 
