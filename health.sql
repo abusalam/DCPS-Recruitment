@@ -1,19 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 29, 2015 at 12:45 PM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Generation Time: Dec 22, 2015 at 12:24 PM
+-- Server version: 5.5.44-37.3-log
+-- PHP Version: 5.5.30
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `health`
@@ -26,7 +27,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE IF NOT EXISTS `applicant` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `appid` varchar(255) NOT NULL,
   `post` varchar(50) NOT NULL,
   `blockapp` varchar(255) NOT NULL,
@@ -55,13 +56,23 @@ CREATE TABLE IF NOT EXISTS `applicant` (
   `pin` varchar(4) NOT NULL,
   `compknowledge` varchar(5) NOT NULL,
   `photo` varchar(2) NOT NULL DEFAULT 'N',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `examroll` varchar(50) NOT NULL,
+  `RejectionRemarks` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `applicant`
+-- Stand-in structure for view `Applicant_IDs`
 --
-
+CREATE TABLE IF NOT EXISTS `Applicant_IDs` (
+`appid` varchar(255)
+,`pin` varchar(4)
+,`aname` varchar(255)
+,`sex` varchar(6)
+,`mobile` varchar(10)
+,`email` varchar(255)
+);
 
 -- --------------------------------------------------------
 
@@ -70,41 +81,10 @@ CREATE TABLE IF NOT EXISTS `applicant` (
 --
 
 CREATE TABLE IF NOT EXISTS `block_muni` (
-  `block_municd` varchar(6) DEFAULT NULL,
+  `block_municd` varchar(6) NOT NULL DEFAULT '',
   `block_muni_nm` varchar(25) DEFAULT NULL,
   `sdiv_cd` varchar(4) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `block_muni`
---
-
-INSERT INTO `block_muni` (`block_municd`, `block_muni_nm`, `sdiv_cd`) VALUES
-('b01', 'CONTAI-I', '1403'),
-('b02', 'DESHAPRAN', '1403'),
-('b03', 'CONTAI-III', '1403'),
-('b04', 'RAMNAGAR-I', '1403'),
-('b05', 'RAMNAGAR-II', '1403'),
-('b06', 'KHEJURI-I', '1403'),
-('b07', 'KHEJURI-II', '1403'),
-('b08', 'BHAGAWANPUR-II', '1403'),
-('b09', 'PANSKURA', '1401'),
-('b10', 'KOLAGHAT', '1401'),
-('b11', 'TAMLUK', '1401'),
-('b12', 'SAHID MATANGINI', '1401'),
-('b13', 'NANDAKUMAR', '1401'),
-('b14', 'MOYNA', '1401'),
-('b15', 'CHANDIPUR', '1401'),
-('b16', 'EGRA-I', '1404'),
-('b17', 'EGRA-II', '1404'),
-('b18', 'PATASHPUR-I', '1404'),
-('b19', 'PATASHPUR-II', '1404'),
-('b20', 'BHAGAWANPUR-I', '1404'),
-('b21', 'MAHISADAL', '1402'),
-('b22', 'SUTAHATA', '1402'),
-('b23', 'HALDIA', '1402'),
-('b24', 'NANDIGRAM-II', '1402'),
-('b25', 'NANDIGRAM-I', '1402');
 
 -- --------------------------------------------------------
 
@@ -113,20 +93,14 @@ INSERT INTO `block_muni` (`block_municd`, `block_muni_nm`, `sdiv_cd`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `compknowledge` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `appid` varchar(255) NOT NULL,
   `course` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `year` varchar(4) NOT NULL,
   `institute` varchar(255) NOT NULL,
-  `duration` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `compknowledge`
---
-
+  `duration` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -135,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `compknowledge` (
 --
 
 CREATE TABLE IF NOT EXISTS `edu_quali` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `appid` varchar(255) NOT NULL,
   `exam` varchar(255) NOT NULL,
   `institute` varchar(255) NOT NULL,
@@ -144,14 +118,8 @@ CREATE TABLE IF NOT EXISTS `edu_quali` (
   `fullmarks` int(4) NOT NULL,
   `marksobtain` int(4) NOT NULL,
   `percentage` varchar(4) NOT NULL,
-  `grade` varchar(4) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
-
---
--- Dumping data for table `edu_quali`
---
-
+  `grade` varchar(4) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -160,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `edu_quali` (
 --
 
 CREATE TABLE IF NOT EXISTS `experience` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `appid` varchar(255) NOT NULL,
   `project` varchar(255) NOT NULL,
   `activity` varchar(255) NOT NULL,
@@ -169,14 +137,8 @@ CREATE TABLE IF NOT EXISTS `experience` (
   `fromdate` date NOT NULL,
   `todate` date NOT NULL,
   `duration` varchar(255) NOT NULL,
-  `remarks` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
-
---
--- Dumping data for table `experience`
---
-
+  `remarks` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -189,17 +151,6 @@ CREATE TABLE IF NOT EXISTS `municipality` (
   `block_muni_nm` varchar(25) DEFAULT NULL,
   `sdiv_cd` varchar(4) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `municipality`
---
-
-INSERT INTO `municipality` (`block_municd`, `block_muni_nm`, `sdiv_cd`) VALUES
-('m01', 'CONTAI MUNICIPALITY', '1403'),
-('m02', 'TAMLUK MUNICIPALITY', '1401'),
-('m03', 'HALDIA MUNICIPALITY', '1402'),
-('m04', 'EGRA MUNICIPALITY', '1404'),
-('m05', 'PANSKURA MUNICIPALITY', '1401');
 
 -- --------------------------------------------------------
 
@@ -214,15 +165,9 @@ CREATE TABLE IF NOT EXISTS `post` (
   `written` varchar(255) DEFAULT NULL,
   `PI` varchar(255) DEFAULT NULL,
   `abbr` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`PostCode`)
+  `ExamDateTime` text NOT NULL,
+  `ExamVenue` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`PostCode`, `PostName`, `SlNo`, `written`, `PI`, `abbr`) VALUES
-('01', 'Block ASHA Facilitator(Contractual)', 1, NULL, NULL, 'BAF');
 
 -- --------------------------------------------------------
 
@@ -235,18 +180,6 @@ CREATE TABLE IF NOT EXISTS `qualification` (
   `desc` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `qualification`
---
-
-INSERT INTO `qualification` (`code`, `desc`) VALUES
-(1, 'Secondary(10th)'),
-(2, 'Higher Secondary(10+2)'),
-(3, 'Graduation'),
-(4, 'Post Graduation'),
-(5, 'PHD'),
-(6, 'OTHER');
-
 -- --------------------------------------------------------
 
 --
@@ -255,18 +188,8 @@ INSERT INTO `qualification` (`code`, `desc`) VALUES
 
 CREATE TABLE IF NOT EXISTS `sex` (
   `Code` varchar(2) NOT NULL DEFAULT '',
-  `Gender` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`Code`)
+  `Gender` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `sex`
---
-
-INSERT INTO `sex` (`Code`, `Gender`) VALUES
-('01', 'Male'),
-('02', 'Female'),
-('03', 'Other');
 
 -- --------------------------------------------------------
 
@@ -276,8 +199,7 @@ INSERT INTO `sex` (`Code`, `Gender`) VALUES
 
 CREATE TABLE IF NOT EXISTS `state` (
   `Code` varchar(2) NOT NULL,
-  `StateName` varchar(50) NOT NULL,
-  PRIMARY KEY (`Code`)
+  `StateName` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -332,16 +254,97 @@ CREATE TABLE IF NOT EXISTS `subdivision` (
   `subdiv` varchar(25) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `subdivision`
+-- Structure for view `Applicant_IDs`
+--
+DROP TABLE IF EXISTS `Applicant_IDs`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`paschuw1_health`@`localhost` SQL SECURITY DEFINER VIEW `Applicant_IDs` AS select `applicant`.`appid` AS `appid`,`applicant`.`pin` AS `pin`,`applicant`.`aname` AS `aname`,`applicant`.`sex` AS `sex`,`applicant`.`mobile` AS `mobile`,`applicant`.`email` AS `email` from `applicant` where (`applicant`.`photo` = 'Y');
+
+--
+-- Indexes for dumped tables
 --
 
-INSERT INTO `subdivision` (`sdiv_cd`, `subdiv`) VALUES
-('1401', 'TAMLUK'),
-('1402', 'HALDIA'),
-('1403', 'CONTAI'),
-('1404', 'EGRA');
+--
+-- Indexes for table `applicant`
+--
+ALTER TABLE `applicant`
+  ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `block_muni`
+--
+ALTER TABLE `block_muni`
+  ADD PRIMARY KEY (`block_municd`);
+
+--
+-- Indexes for table `compknowledge`
+--
+ALTER TABLE `compknowledge`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `edu_quali`
+--
+ALTER TABLE `edu_quali`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `experience`
+--
+ALTER TABLE `experience`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`PostCode`);
+
+--
+-- Indexes for table `qualification`
+--
+ALTER TABLE `qualification`
+  ADD PRIMARY KEY (`code`);
+
+--
+-- Indexes for table `sex`
+--
+ALTER TABLE `sex`
+  ADD PRIMARY KEY (`Code`);
+
+--
+-- Indexes for table `state`
+--
+ALTER TABLE `state`
+  ADD PRIMARY KEY (`Code`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `applicant`
+--
+ALTER TABLE `applicant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `compknowledge`
+--
+ALTER TABLE `compknowledge`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `edu_quali`
+--
+ALTER TABLE `edu_quali`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `experience`
+--
+ALTER TABLE `experience`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
