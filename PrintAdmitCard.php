@@ -87,7 +87,7 @@ if (isset($_GET["examroll"])) {
                     <h4>Father/Husband Name: <?php echo $row["father"]; ?></h4>
                     <h4>
                         Address: <?php echo $row["perm_address"] . "," . $row["perm_subdiv"] . "," . $row["perm_dist"]
-                            . "," . $row["perm_pin"] . "," . $row["StateName"]; ?>
+                            . "," . $row["perm_pin"] . "," . $row["perm_state"]; ?>
                     </h4>
                 </div>
                 <p>
@@ -99,8 +99,8 @@ if (isset($_GET["examroll"])) {
                 </p>
 
                 <p>
-                    He/She should report to the Officer-in-Charge of the Examination
-                    Centre 30 Mins before the exam starts.
+                    He/She should report to the venue of the Examination
+                    Centre atleast 30 Mins before the exam starts.
                 </p>
                 <strong>Instructions related to the Examination: </strong><br>
                 <ol>
@@ -130,10 +130,10 @@ if (isset($_GET["examroll"])) {
                     </li>
                     <li>
                         Please note that all the cost related to attending the
-                        selection process would be borne by the candidate himself.
+                        selection process would be borne by the candidate himself/herself.
                     </li>
                     <li>
-                        Mobile Phone, Calculator will not be allowed inside the
+                        Mobile Phone, Calculator or any other electronic device will not be allowed inside the
                         examination hall.
                     </li>
                 </ol>
@@ -144,10 +144,7 @@ if (isset($_GET["examroll"])) {
                     Paschim Medinipur
                 </div>
                 <p>
-                    <strong>
-                        NB: Candidates securing highest marks in written test upto 10 from IT and
-                        upto 5 from Hospital Management will be eligible for Computer Test to be held on the same day.
-                    </strong>
+                    <strong><?php echo ADMIT_NB;?></strong>
                 </p>
 
                 <div style="clear: both; text-align: center; border-top: 1px dashed; padding-top: 10px;">
