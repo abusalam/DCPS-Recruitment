@@ -155,7 +155,7 @@ if (isset($_GET["examroll"])) {
                 </div>
                 <div style="padding-bottom: 50px;">
                     <div style="float: right; border: 1px solid;padding: 5px;margin-right: 10px;text-align: center;">
-                        <img src="<?php echo $Sign; ?>" width="240" alt="photograph"><br/>
+                        <img src="<?php echo $Sign; ?>" width="240" height="50" alt="Signature"><br/>
 
                         <div style="padding-top: 5px;">Signature Uploaded by the Candidate</div>
                     </div>
