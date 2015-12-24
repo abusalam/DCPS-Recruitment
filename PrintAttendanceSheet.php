@@ -3,7 +3,7 @@ include("connection.php");
 
 if (isset($_GET["post"])) {
     $Post = trim($_GET["post"]);
-    $sqlstr = "SELECT a.appid, a.post, a.examroll, a.aname, a.father, a.perm_address,
+    $sqlstr = "SELECT a.appid, a.post, a.examroll, a.aname, a.father, a.dob, a.age_yr, a.perm_address,
                     a.perm_subdiv, perm_pin, a.mobile, a.perm_state, PostName, ExamDateTime, ExamVenue
                     FROM applicant as a inner join post as p on ( a.post = p.PostCode )
                     where a.post = '" . Remove_SQLi($Post) . "' and `RejectionRemarks`='Accepted'
@@ -87,6 +87,9 @@ if (isset($_GET["post"])) {
                         <div
                             style="float: left;height: 170px; padding: 5px;width:300px; line-height: 20px; text-overflow: ellipsis; overflow: hidden;">
                             <span><strong>Roll No: </strong><?php echo $row["examroll"]; ?></span><br/>
+                            <span><strong>Date of Birth: </strong>
+                                <?php echo $row["dob"] . " (" . $row["age_yr"] . " Years)"; ?>
+                            </span><br/>
                             <span><strong>Name: </strong><br/><?php echo $row["aname"]; ?></span><br/>
                             <span><strong>Father/Husband Name: </strong><br/><?php echo $row["father"]; ?></span><br/>
                             <span style="">

@@ -3,20 +3,24 @@ include("connection.php");
 
 if (isset($_GET["examroll"])) {
     $examroll = trim($_GET["examroll"]);
-    $Rejected =false;
+    $Rejected = false;
     if (!strchr($examroll, "R")) {
-        $sqlstr = "SELECT a.appid, a.post, a.examroll, a.aname, a.father, a.perm_address,
-                    a.perm_subdiv, perm_pin, a.mobile, a.perm_state, PostName, ExamDateTime, ExamVenue
-                    FROM applicant as a inner join post as p on ( a.post = p.PostCode )
-                    where a.examroll = '" . Remove_SQLi($examroll) . "'";
+        $sqlstr = "SELECT a.appid, a.post, a.examroll, a.aname, a.father, a.perm_address, RejectionRemarks,"
+            . "a.dob, a.age_yr, a.perm_subdiv, perm_pin, a.mobile, a.perm_state, PostName, ExamDateTime, ExamVenue"
+            . " FROM applicant as a inner join post as p on ( a.post = p.PostCode )"
+            . "where a.examroll = '" . Remove_SQLi($examroll) . "'";
         $result = executeSqlQuery($sqlstr);
         $row = mysql_fetch_array($result);
+        if ($row["RejectionRemarks"] != "Accepted") {
+            $Rejected = true;
+        }
     } else {
-        $sqlstr = "SELECT `RejectionRemarks` FROM applicant
-                    where examroll = '" . Remove_SQLi($examroll) . "'";
+        $sqlstr = "SELECT `RejectionRemarks`"
+            . " FROM applicant"
+            . " where examroll = '" . Remove_SQLi($examroll) . "'";
         $result = executeSqlQuery($sqlstr);
         $row = mysql_fetch_array($result);
-        $Rejected=true;
+        $Rejected = true;
     }
 
     $AppID = str_replace("/", "_", $row["appid"]);
@@ -33,30 +37,20 @@ if (isset($_GET["examroll"])) {
                     margin: 5mm 5mm 5mm 5mm; /* change the margins as you want them to be. */
                 }
 
-                body {
-                    bgcolor: white;
-                    color: black;
-                    font-family: verdana;
-                    font-size: 0.8em;
-                }
-
                 .tips {
                     display: none;
                 }
             }
 
-            @media screen {
-                body {
-                    bgcolor: white;
-                    color: black;
-                    font-family: verdana;
-                    font-size: 12px;
-                }
+            body {
+                bgcolor: white;
+                color: black;
+                font-family: verdana;
+                font-size: 0.8em;
+            }
 
-                p {
-                    text-indent: 20px;
-                    text-align: justify;
-                }
+            h3 {
+                line-height: 12px;
             }
 
         </style>
@@ -71,7 +65,7 @@ if (isset($_GET["examroll"])) {
                 </h2>
                 <strong>Reason of Rejection:</strong>
                 <span style="color: red;">
-                    <?php echo $row["RejectionRemarks"];?>.
+                    <?php echo $row["RejectionRemarks"]; ?>.
                 </span>
             <?php else : ?>
                 <h2 style="clear: both;text-align: center">Provisional Admit Card</h2>
@@ -83,6 +77,9 @@ if (isset($_GET["examroll"])) {
                     <h3>Post: <?php echo $row["PostName"]; ?></h3>
 
                     <h3><span>Roll No: <?php echo $row["examroll"]; ?></h3>
+                    <h3><strong>Date of Birth: </strong>
+                        <?php echo $row["dob"] . " (" . $row["age_yr"] . " Years)"; ?>
+                    </h3>
                     <h4>Name: <?php echo $row["aname"]; ?></h4>
                     <h4>Father/Husband Name: <?php echo $row["father"]; ?></h4>
                     <h4>
@@ -144,7 +141,7 @@ if (isset($_GET["examroll"])) {
                     Paschim Medinipur
                 </div>
                 <p>
-                    <strong><?php echo ADMIT_NB;?></strong>
+                    <strong><?php echo ADMIT_NB; ?></strong>
                 </p>
 
                 <div style="clear: both; text-align: center; border-top: 1px dashed; padding-top: 10px;">
@@ -162,10 +159,12 @@ if (isset($_GET["examroll"])) {
                     <h3><span>Post: <?php echo $row["PostName"]; ?></span></h3>
 
                     <h3><span>Roll No: <?php echo $row["examroll"]; ?></span></h3>
-
+                    <h3><strong>Date of Birth: </strong>
+                        <?php echo $row["dob"] . " (" . $row["age_yr"] . " Years)"; ?>
+                    </h3>
                     <h4><strong>Name: </strong><?php echo $row["aname"]; ?></h4>
                 </div>
-                <div style="float: left;text-align: center;">
+                <div style="float: left;text-align: center;margin-left: 150px;">
                     <strong>---------------------------------------------<br>
                         Signature of Candidate </strong>
                 </div>
